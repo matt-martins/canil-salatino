@@ -1,0 +1,27 @@
+<section class="lista">
+	<?php echo $this->breadcrumb( $this->obj, true ) ?>
+	<header class="header">
+		<h2><?php echo $this->obj->section->name ?></h2>
+	</header>
+	
+	<section class="inner">
+		<nav class="list-menu">
+			<ul>
+			<?php foreach( $this->obj->content as $value ):?>
+				<li>
+					<span>
+						<a href="<?php echo $this->linkslist($this->obj, $value)?>">
+							<img src="<?php echo is_file($_SERVER['DOCUMENT_ROOT']. __ROOT__ .'public/uploads/'. $value->smallPicture) ?
+								__ROOT__.'public/uploads/'. $value->smallPicture :
+								__ROOT__.'public/site/images/nao-disponivel.jpg'
+							?>" width="150" height="100" >
+						</a>
+					</span>
+					<a href="<?php echo $this->linkslist($this->obj, $value)?>"><?php echo $value->title ?></a>
+				</li>
+			<?php endforeach;?>
+			</ul>
+		</nav>
+	</section>
+</section>
+

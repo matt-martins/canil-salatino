@@ -1,0 +1,20 @@
+<section class="common">
+	<?php echo $this->breadcrumb( $this->obj ) ?>
+	<header class="header">
+		<h2><?php echo $this->obj->content[0]->title ?></h2>
+	</header>
+	
+	<section class="inner">
+		<article class="box">
+		
+			<?php if( isset($this->obj->content[0]->picture) ):?>
+			<span><img src="<?php echo __ROOT__?>public/uploads/<?php echo $this->obj->content[0]->picture ?>" width="600" ></span>
+			<?php endif?>
+		
+			<?php if( isset($this->obj->content[0]->body) ):?>
+			<p><?php echo $this->obj->content[0]->body ?></p>
+			<?php endif?>
+		</article>
+		<?php if( $this->obj->content[0]->showGallery ) echo $this->gallery( $this->obj->content[0]->folder ); ?>
+	</section>
+</section>

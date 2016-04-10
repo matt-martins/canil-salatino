@@ -1,0 +1,23 @@
+<section class="common video">
+	<?php echo $this->breadcrumb( $this->obj ) ?>
+	<header class="header">
+		<h2><?php echo $this->obj->content[0]->title ?></h2>
+	</header>
+	
+	<section class="inner">
+		<article class="box">
+		
+			<span>
+				<iframe width="560" height="315" src="http://www.youtube.com/embed/<?php echo $this->obj->content[0]->video ?>" frameborder="0" allowfullscreen></iframe>
+			</span>
+
+			<?php if( isset($this->obj->content[0]->body) ):?>
+			<p><?php echo $this->obj->content[0]->body ?></p>
+			<?php endif?>
+
+		</article>
+		<?php if( $this->obj->content[0]->showGallery ) echo $this->gallery( $this->obj->content[0]->folder ); ?>
+	</section>
+</section>
+
+<?php //echo $this->related( $this->obj->content[0]->tags, 'Outras Noticias' )?>

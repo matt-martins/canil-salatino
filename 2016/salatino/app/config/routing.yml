@@ -1,0 +1,7 @@
+salatino_site:
+    resource: "@SalatinoSiteBundle/Controller/"
+    type:     annotation
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation

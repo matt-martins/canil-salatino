@@ -1,0 +1,14 @@
+.insert_button {
+	display: none;
+}
+
+#cp14-label,
+#cp13-label,
+#cp12-label,
+#cp10-label,
+#cp07-label,
+#cp06-label,
+#cp05-label,
+#cp03-label {
+	display: none;
+}

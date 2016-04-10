@@ -1,0 +1,69 @@
+body .common .inner {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body #header {
+	background: #c0c2a7;
+    height: 177px;
+    margin: 0 auto;
+    width: 100%;
+}
+body #header img {
+    display: none;
+    float: left;
+}
+body #header h1 {
+    left: 50%;
+    margin: 0 0 0 -130px;
+    top: 5px;
+}
+body .menu {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: none;
+
+}
+body #header .nav {
+	display: none;
+}
+body #section #main {
+    width: 95%;
+    margin: 0 auto;
+    float: none;
+}
+
+body #section {
+    padding-bottom: 100px;
+    width: 100%;
+}
+body .common .inner {
+    background: none repeat scroll 0 0 #bbbe9d;
+    padding: 15px;
+    width: 100%;
+}
+body .common .header {
+    margin-right: 0;
+    overflow: auto;
+    width: 100%;
+}
+body .common h2 {
+    float: none;
+    font-size: 25px;
+    line-height: 30px;
+    margin: 0;
+    padding: 10px 0;
+    text-indent: 10px;
+    text-transform: none;
+    width: 100%;
+}
+body .common .inner span img {
+	width: 100%;
+}
+body .lista .breadCrumb, .common .breadCrumb {
+    border-bottom: 30px solid #bbbe9d;
+    margin-right: 0;
+    overflow: auto;
+}

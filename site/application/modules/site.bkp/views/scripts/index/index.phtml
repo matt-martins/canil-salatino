@@ -1,0 +1,66 @@
+<article class="article">
+	<h2>Notícias</h2>
+	<section class="carrossel">
+	<?php foreach ( $this->obj->noticias as $value ) : ?>
+		<article class="carrossel-itens">
+			<p class="antic-regular"><a href="<?php echo __LINKS__ . $value->idSection ?>"><?php echo $value->title ?></a></p>
+			<span><a href="<?php echo __LINKS__ . $value->idSection ?>"><img src="<?php echo is_file($_SERVER['DOCUMENT_ROOT'].__ROOT__.'public/uploads/'. $value->smallPicture) ?
+						__ROOT__.'public/uploads/'. $value->smallPicture :
+						__ROOT__.'public/site/images/nao-disponivel.jpg'
+					?>" width="270" height="180" ></a></span>
+		</article>
+	<?php endforeach; ?>
+		
+		<ul class="naveg-buttons">
+			<li class="active"><strong>lk0</strong></li>
+			<li><strong>lk2</strong></li>
+			<li><strong>lk2</strong></li>
+		</ul>
+	</section>
+</article>
+
+<article class="article">
+	<h2>Mídia</h2>
+	<section class="list">
+	<?php foreach ( $this->obj->midia as $value ): ?>
+		<article class="notice">
+			<p class="antic-regular"><a href="<?php echo __LINKS__ . $value->idSection ?>"><?php echo $value->title ?></a></p>
+			<span><a href="<?php echo __LINKS__ . $value->idSection ?>"><img src="<?php echo is_file($_SERVER['DOCUMENT_ROOT'].__ROOT__.'public/uploads/'. $value->smallPicture) ?
+						__ROOT__.'public/uploads/'. $value->smallPicture :
+						__ROOT__.'public/site/images/nao-disponivel.jpg'
+					?>" width="150" height="100" ></a></span>
+		</article>
+	<?php endforeach; ?>
+		
+	</section>
+</article>
+
+<article class="article">
+	<h2>Clube Salatino</h2>
+	<section class=highlight>
+	<?php foreach ( $this->obj->clube as $value ): ?>
+		<article class="notice">
+			<span><a href="<?php echo __LINKS__ . $value->idSection ?>"><img src="<?php echo is_file($_SERVER['DOCUMENT_ROOT'].__ROOT__.'public/uploads/'. $value->smallPicture) ?
+						__ROOT__.'public/uploads/'. $value->smallPicture :
+						__ROOT__.'public/site/images/nao-disponivel.jpg'
+					?>" width="210" height="140" ></a></span>
+			<p><a href="<?php echo __LINKS__ . $value->idSection ?>"><?php echo $value->title ?></a></p>
+		</article>
+	<?php endforeach; ?>
+	</section>
+</article>
+<?php /*
+<article class="article">
+	<h2>Galeria de Fotos</h2>
+	<section class=gallery>
+		<article class="notice">
+		<?php foreach ( $this->obj->fotos as $value ): ?>
+			<a href="<?php echo __LINKS__ . $value->idSection ?>"><img src="<?php echo is_file($_SERVER['DOCUMENT_ROOT'].__ROOT__.'public/uploads/'. $value->smallPicture) ?
+						__ROOT__.'public/uploads/'. $value->smallPicture :
+						__ROOT__.'public/site/images/nao-disponivel.jpg'
+					?>" width="229" height="153" ></a>
+		<?php endforeach; ?>
+		</article>
+	</section>
+</article>
+*/ ?>

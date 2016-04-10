@@ -1,0 +1,116 @@
+<section class="common">
+	<?php echo $this->breadcrumb( $this->obj ) ?>
+	<header class="header">
+		<h2><?php echo $this->obj->content[0]->title ?></h2>
+	</header>
+	
+	<section class="inner">
+		<article class="box">
+		
+			<?php if( isset($this->obj->content[0]->picture) ):?>
+			<span><img src="<?php echo __ROOT__?>public/uploads/<?php echo $this->obj->content[0]->picture ?>" width="600" ></span>
+			<?php endif?>
+		
+			<?php if( isset($this->obj->content[0]->body) ):?>
+			<p><?php echo $this->obj->content[0]->body ?></p>
+			<?php endif?>
+		</article>
+		<?php if( $this->obj->content[0]->showGallery ) echo $this->gallery( $this->obj->content[0]->folder ); ?>
+	</section>
+</section>
+
+<?php if( isset($this->obj->pedigree->cp01) ): ?>
+<section class="pedigree">
+	<header class="header">
+		<h2>Pedigree</h2>
+	</header>
+	
+	<section class="inner">
+		<article class="box">
+		
+			<table>
+				<thead>
+					<tr>
+						<th class="pais">Pais</th>
+						<th class="avos">Avós</th>
+						<th class="bisavos">Bisavós</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="border"></td>
+						<td class="border"></td>
+						<td><?php echo $this->obj->pedigree->cp04 ?></td>
+					</tr>
+					<tr>
+						<td class="border"></td>
+						<td class="border"></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td class="border"></td>
+						<td class="border"><?php echo $this->obj->pedigree->cp02 ?></td>
+						<td><?php echo $this->obj->pedigree->cp05 ?></td>
+					</tr>
+					<tr>
+						<td class="border"><?php echo $this->obj->pedigree->cp01 ?></td>
+						<td class="border"></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td class="border"></td>
+						<td class="border"><?php echo $this->obj->pedigree->cp03 ?></td>
+						<td><?php echo $this->obj->pedigree->cp06 ?></td>
+					</tr>
+					<tr>
+						<td class="border"></td>
+						<td class="border"></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td class="border"></td>
+						<td class="border"></td>
+						<td><?php echo $this->obj->pedigree->cp07 ?></td>
+					</tr>
+					<tr class="mae">
+						<td class="border"></td>
+						<td class="border"></td>
+						<td><?php echo $this->obj->pedigree->cp11 ?></td>
+					</tr>
+					<tr class="mae">
+						<td class="border"></td>
+						<td class="border"></td>
+						<td></td>
+					</tr>
+					<tr class="mae">
+						<td class="border"></td>
+						<td class="border"><?php echo $this->obj->pedigree->cp09 ?></td>
+						<td><?php echo $this->obj->pedigree->cp12 ?></td>
+					</tr>
+					<tr class="mae">
+						<td class="border"><?php echo $this->obj->pedigree->cp08 ?></td>
+						<td class="border"></td>
+						<td></td>
+					</tr>
+					<tr class="mae">
+						<td class="border"></td>
+						<td class="border"><?php echo $this->obj->pedigree->cp10 ?></td>
+						<td><?php echo $this->obj->pedigree->cp13 ?></td>
+					</tr>
+					<tr class="mae">
+						<td class="border"></td>
+						<td class="border"></td>
+						<td></td>
+					</tr>
+					<tr class="mae">
+						<td class="border"></td>
+						<td class="border"></td>
+						<td><?php echo $this->obj->pedigree->cp14 ?></td>
+					</tr>
+				</tbody>
+			</table>		
+		
+		</article>
+	</section>
+</section>
+<?php endif ?>

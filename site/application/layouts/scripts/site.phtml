@@ -1,0 +1,150 @@
+<?php echo $this->doctype() . "\n" ?>
+<html class="no-js" lang="pt-br">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+	<meta name="viewport" content="width=1020" />
+
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<meta http-equiv="Pragma" content="no-cache" />
+
+	<meta name="robots" content="index, follow" />
+	<meta name="robot" content="All" />
+	<meta name="language" content="pt-br" />
+	<meta name="author" content="Mateus Martins | mateusweb@gmail.com" />
+	<meta name="MSSmartTagsPreventParsing" content="true" />
+	<meta name="rating" content="general" />
+	<meta name="distribuition" content="global" />
+	
+	<meta name="title" content="<?php echo $this->headers->title ?>" />
+	<meta name="keywords" content="<?php echo $this->headers->keywords ?>" />
+	<meta name="description" content="<?php echo $this->headers->description ?>" />
+
+	<link rel="icon" type="image/x-icon" href="<?php echo __ROOT__ ?>public/admin/images/favicon.ico" />
+
+	<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+	<link href="<?php echo __ROOT__ ?>public/site/css/reset.css" media="screen" rel="stylesheet" type="text/css" />
+	<link href="<?php echo __ROOT__ ?>public/site/css/style.css" media="screen" rel="stylesheet" type="text/css" />
+	
+	<script src="<?php echo __ROOT__ ?>public/site/js/jquery-min.js" type="text/javascript"></script>
+	<script src="<?php echo __ROOT__ ?>public/site/js/site.js" type="text/javascript"></script>
+	
+	<?php echo Nadeb_HeaderController::load() ?>
+	
+	<title><?php echo $this->headers->title ?></title>
+</head>
+<body>
+
+	<header id="header">
+		<div class="wrapper">
+			<h1><a href="<?php echo 'http://' . __DOMAIN__ . __LINKS__ ?>">Canil Salatino</a></h1>
+			<img src="<?php echo __ROOT__?>public/uploads/<?php echo $this->banner->image ?>" width="980" height="176" alt="Canil Salatino">
+			<nav class="nav">
+				<ul>
+					<li class="home antic-regular"><a href="<?php echo 'http://' . __DOMAIN__ . __LINKS__ ?>">Home</a></li>
+					<li class="social">
+						<ul>
+							<li>Compartilhe: </li>
+							<li class="facebook"><a href="https://www.facebook.com/clubesalatino">Facebook</a></li>
+							<li class="pinterest"><a href="http://pinterest.com/salatinosclub/">Pinterest</a></li>
+							<li class="instagram"><a href="http://instagram.com/clube_salatino/">Instagram</a></li>
+							<li class="email"><a href="mailto:salatino@salatino.com.br">Email</a></li>
+						</ul>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	
+	<section id="section">
+		<section id="main">
+			<?php echo $this->layout()->content  . "\n" ?>
+		</section>
+		
+		<nav class="menu antic-regular">
+			<?php 
+			$html = '<ul>';	
+			foreach ( Site_Model_Sections::getMenu() as $key => $value )
+			{
+				$class = $this->index['section'] == $value['idSection'] && isset($value['sub']) ? ' class="selected"' : '';
+				$html .= '<li'.$class.'>';	
+				$html .= '<a class="bc'.$value['blankContent'].'" href="'.( !$value['blankContent'] ? 'http://' . __DOMAIN__ . __LINKS__ . Nadeb_ClearLinks::clear($value['name']) : 'http://' . __DOMAIN__ . __LINKS__ . '#' ).'">'.$value['name'].'</a>';
+				if( isset($value['sub']) )
+				{
+					$html .= '<ul>';
+					foreach ( $value['sub'] as $index => $text )
+					{
+						$html .= '<li><a href="'. 'http://' . __DOMAIN__ . __LINKS__ . Nadeb_ClearLinks::clear($value['name']) . '/' . Nadeb_ClearLinks::clear($text['name']).'">'.$text['name'].'</a></li>';
+					}
+					$html .= '</ul>';
+				}
+				$html .= '</li>';
+			}
+			$html .= '<li><a href="'. 'http://' . __DOMAIN__ . __LINKS__ .'fale-conosco">Fale Conosco</a></li>';
+			$html .= '<li><a href="'. 'http://' . __DOMAIN__ . __LINKS__ .'cadastre-se">Cadastre-se</a></li>';			
+			$html .= '</ul>';
+			
+			echo $html;
+			?>
+			<img border="0" alt="hit counter" class="counter" src="http://c19.statcounter.com/counter.php?sc_project=2044589&amp;java=0&amp;security=3e3f4818&amp;invisible=0">
+		</nav>
+	</section>
+
+	<footer id="footer">
+		<section id="wrapper">
+			<div class="lt antic-regular">
+				<h3>canil salatino</h3>
+				<p>
+					ROCHESTER OLIVEIRA E CLAUDIO GORNATI <br>
+					EMBU DAS ARTES - SÃO PAULO - BRASIL <br>
+					+55 (11) 4616-3859
+				</p>
+				<p>CANIL SALATINO &#169; Todos os direitos reservados</p>
+				
+				<ul class="bandeiras antic-regular">
+					<li class="p1"><a href="mailto:canilsalatino@terra.com.br">On Parle Français</a></li>
+					<li class="p2"><a href="mailto:canilsalatino@terra.com.br">Hablamos Español</a></li>
+					<li class="p3"><a href="mailto:canilsalatino@terra.com.br">We Do Speak English</a></li>
+				</ul>
+			</div>
+
+			<div>
+				<h3>parceiros</h3>
+				<nav class="menu-parceiros">
+					<ul>
+						<li class="p1"><a href="http://www.proplan.com.br/" target="_blank" title="Purina - Pro Plan">Purina - Pro Plan</a></li>
+						<li class="p2"><a href="http://www.petsociety.com.br/" target="_blank" title="Pet Society">Pet Society</a></li>
+						<li class="p3"><a href="http://www.pfizersaudeanimal.com.br/" target="_blank" title="Pfizer Saúde Animal">Pfizer Saúde Animal</a></li>
+					</ul>
+				</nav>
+			</div>
+		</section>
+		<span></span>
+	</footer>
+	
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-28779157-1']);
+	  _gaq.push(['_trackPageview']);
+	
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+
+	  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','//connect.facebook.net/en_US/fbevents.js');
+	  fbq('init', '1629750240610790');
+	  fbq('track', 'PageView');
+
+	</script>
+
+	<noscript>
+		<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1629750240610790&amp;ev=PageView&amp;noscript=1"/>
+	</noscript>
+	
+</body>
+</html>
