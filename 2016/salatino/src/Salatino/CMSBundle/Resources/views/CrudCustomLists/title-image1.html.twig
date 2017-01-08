@@ -1,0 +1,44 @@
+{% extends 'SalatinoCMSBundle:Crud:list.html.twig' %}
+
+{% block list %}
+	<div class="row">
+	{% for row in list %}
+		{% set _path = ( model.category is null
+			? path('_cms_edit'      , { 'modelName' : modelName, 'id' : row.id } ) 
+			: path('_cms_edit_categ', { 'modelName' : modelName, 'categ' : model.category, 'id' : row.id } ) ) %}
+
+		<div class="col-sm-4 title-image1 rowItem">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<div class="row">
+							<a class="col-sm-10" href="{{ _path }}">
+								{{ row.title }}
+							</a>
+						
+							<a class="col-sm-2 removeItem" href="{{ path('_cms_delete', { 'id' : row.id, 'modelName' : modelName }) }}">
+								<span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span>
+							</a>
+						</div>
+					</h3>
+
+
+				</div>
+				<div class="panel-body">
+					<a href="{{ _path }}">
+						<img 
+							data-src="holder.js/450x200?text=no%20image" 
+							{% if row.image1 is not null %}
+								src="{{ asset('/upload/') }}{{ row.image1 }}" 
+							{% endif %}
+							alt="{{row.image1}}" 
+							class="img-thumbnail">
+					</a>
+				</div>
+			</div>
+		</div><!-- /.col-sm-4 -->
+	
+	{{ loop.index % 3 ? '' : '</div><div class="row">' }}
+	{% endfor %}
+	</div>
+{% endblock %}

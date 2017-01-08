@@ -1,0 +1,76 @@
+{% extends "SalatinoSiteBundle::layout.html.twig" %}
+
+{% block content %}
+<div class="container">
+
+	<div class="single-header-image">
+		<img src="{{ asset('bundles/salatinosite/images/contact.jpg') }}">
+	</div>
+	
+
+	<div class="row">
+		<div class="col-sm-12">
+			<h2>Fale Conosco</h2>
+
+			<form>
+				<div class="col-sm-12 form-group">
+					<input type="text" class="form-control" id="fullName" name="fullName" placeholder="NOME">
+				</div>
+
+				<div class="col-sm-12 form-group">
+					<input type="email" class="form-control" id="email" name="email" placeholder="EMAIL">
+				</div>
+
+				<div class="col-sm-12 form-group">
+					<input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="TELEFONE">
+				</div>
+
+				<div class="col-sm-12 form-group">
+					<textarea class="form-control" name="message" id="message" cols="30" rows="5" placeholder="MENSAGEM"></textarea>
+				</div>
+
+				<div class="col-sm-6 checkbox-gorup optIncontact">
+					<label class="form-inline">
+						<input type="checkbox" name="optIn" id="optIn" value="1">
+						Desejo receber novidades do canil salatino em meu email
+					</label>
+				</div>
+
+				<div class="col-sm-6 form-group submit-footer">
+					<button type="submit" class="btn btn-default pull-right">ENVIAR</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="breeds-component">
+			<div class="col-sm-12"><h2>Canil Salatino</h2></div>
+			
+			<div class="col-sm-4">
+				<div class="box-italian">
+					<h4>ITALIAN GREYHOUND</h4>
+					<a href="{{ path('_section', { 'permalink' : 'italian-greyhound' }) }}">veja mais</a>
+				</div>
+			</div>
+
+			<div class="col-sm-4 pdl pdr">
+				<div class="box-teckel">
+					<h4>TECKEL PELO LONGO</h4>
+					<a href="{{ path('_section', { 'permalink' : 'teckel' }) }}">veja mais</a>
+				</div>
+			</div>
+
+			<div class="col-sm-4">
+				<div class="box-papillon">
+					<h4>PAPILLON</h4>
+					<a href="{{ path('_section', { 'permalink' : 'papillon' }) }}">veja mais</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{% embed "SalatinoSiteBundle::Snippet/PartnersNews.html.twig" %}{% endembed %}
+
+</div>
+{% endblock %}

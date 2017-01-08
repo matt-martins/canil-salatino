@@ -1,0 +1,22 @@
+{% extends "SalatinoSiteBundle::layout.html.twig" %}
+
+{% block content %}
+<div class="container">
+	
+	<div class="row">
+		<div class="col-sm-12 page-not-found">
+			<h2>Página não encontrada!</h2>
+			<div class="not-found-description">
+				<p>
+					O endereço que você esta tentando acessar não existe.
+				</p>
+			</div>
+		</div>
+	</div>
+
+	{% embed "SalatinoSiteBundle::Snippet/Instagram.html.twig" %}{% endembed %}
+
+	{% embed "SalatinoSiteBundle::Snippet/PartnersNews.html.twig" %}{% endembed %}
+
+</div>
+{% endblock %}

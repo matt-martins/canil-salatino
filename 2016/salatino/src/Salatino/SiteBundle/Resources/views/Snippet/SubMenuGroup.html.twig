@@ -1,0 +1,200 @@
+{% if section.group == 'breed' %}
+	<div class="row">
+		<div class="breeds-component">
+			<div class="col-sm-12"><h2>{{ post.title }}</h2></div>
+			
+			<div class="col-sm-4">
+				<div class="box-dynamic breed-machos">
+					<h4>MACHOS</h4>
+					<a href="{{ path('_sub_section', { 'permalink' : permalink, 'sub' : 'machos' }) }}">VEJA MAIS</a>
+				</div>
+			</div>
+
+			<div class="col-sm-4 pdl pdr">
+				<div class="box-dynamic breed-femeas">
+					<h4>FEMEAS</h4>
+					<a href="{{ path('_sub_section', { 'permalink' : permalink, 'sub' : 'femeas' }) }}">VEJA MAIS</a>
+				</div>
+			</div>
+
+			<div class="col-sm-4">
+				<div class="box-dynamic breed-filhotes">
+					<h4>FILHOTES</h4>
+					<a href="{{ path('_sub_section', { 'permalink' : permalink, 'sub' : 'filhotes' }) }}">VEJA MAIS</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{% if permalink == 'italian-greyhound' %}
+	<div class="row">
+		<div class="submenu-component">
+			<div class="col-sm-6">
+				<a href="{{ path('_sub_section', { 'permalink' : permalink, 'sub' : 'padroes-fci-e-akc' }) }}">PADRÕES FCI E AKC</a>
+			</div>
+
+			<div class="col-sm-6 pdl">
+				<a href="{{ path('_sub_section', { 'permalink' : permalink, 'sub' : 'origem-do-italian-greyhound-salatino' }) }}">HISTÓRIA DO GALGINHO NO SALATINO</a>
+			</div>
+		</div>
+	</div>
+	{% endif %}
+
+	{% if permalink == 'papillon' %}
+	<div class="row">
+		<div class="submenu-component">
+			<div class="col-sm-6">
+				<a href="{{ path('_sub_section', { 'permalink' : permalink, 'sub' : 'campeoes' }) }}">NOSSOS CAMPEÕES</a>
+			</div>
+
+			<div class="col-sm-6 pdl">
+				<a href="{{ path('_sub_section', { 'permalink' : permalink, 'sub' : 'videos' }) }}">VIDEOS</a>
+			</div>
+		</div>
+	</div>
+	{% endif %}
+
+{% endif %}
+
+
+{% if section.group == 'breed-inner' %}
+	<div class="row">
+		<div class="submenu-component lg mg-5-top">
+			<div class="col-sm-4">
+				<a href="{{ path('_sub_section', { 'permalink' : permalink, 'sub' : 'machos' }) }}">MACHOS</a>
+			</div>
+
+			<div class="col-sm-4 pdl pdr">
+				<a href="{{ path('_sub_section', { 'permalink' : permalink, 'sub' : 'femeas' }) }}">FEMEAS</a>
+			</div>
+
+			<div class="col-sm-4">
+				<a href="{{ path('_sub_section', { 'permalink' : permalink, 'sub' : 'filhotes' }) }}">FILHOTES</a>
+			</div>
+		</div>
+	</div>
+
+	{% if permalink == 'italian-greyhound' %}
+	<div class="row">
+		<div class="submenu-component">
+			<div class="col-sm-6">
+				<a href="{{ path('_sub_section', { 'permalink' : permalink, 'sub' : 'padroes-fci-e-akc' }) }}">PADRÕES FCI E AKC</a>
+			</div>
+
+			<div class="col-sm-6 pdl">
+				<a href="{{ path('_sub_section', { 'permalink' : permalink, 'sub' : 'origem-do-italian-greyhound-salatino' }) }}">HISTÓRIA DO GALGINHO NO SALATINO</a>
+			</div>
+		</div>
+	</div>
+	{% endif %}
+
+	{% if permalink == 'papillon' %}
+	<div class="row">
+		<div class="submenu-component">
+			<div class="col-sm-6">
+				<a href="{{ path('_sub_section', { 'permalink' : permalink, 'sub' : 'campeoes' }) }}">NOSSOS CAMPEÕES</a>
+			</div>
+
+			<div class="col-sm-6 pdl">
+				<a href="{{ path('_sub_section', { 'permalink' : permalink, 'sub' : 'videos' }) }}">VIDEOS</a>
+			</div>
+		</div>
+	</div>
+	{% endif %}
+
+	<div class="row">
+		<div class="col-sm-12"><h2>{{ section.name }}</h2></div>
+	</div>
+{% endif %}
+
+
+{% if section.group == 'club' %}
+	<div class="row">
+		<div class="breeds-component">
+			<div class="col-sm-12"><h2>{{ post.title }}</h2></div>
+			
+			<div class="col-sm-4">
+				<div class="box-dynamic breed-machos">
+					<h4>SALATINO NA MÍDIA</h4>
+					<a href="{{ path('_section', { 'permalink' : 'salatino-na-midia' }) }}">VEJA MAIS</a>
+				</div>
+			</div>
+
+			<div class="col-sm-4 pdl pdr">
+				<div class="box-dynamic breed-femeas">
+					<h4>HOTEL PARA CÃES</h4>
+					<a href="{{ path('_section', { 'permalink' : 'hotel-para-caes' }) }}">VEJA MAIS</a>
+				</div>
+			</div>
+
+			<div class="col-sm-4">
+				<div class="box-dynamic breed-filhotes">
+					<h4>CONTATO</h4>
+					<a href="{{ path('_contact_us') }}">VEJA MAIS</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="submenu-component">
+			<div class="col-sm-3">
+				<a href="{{ path('_section', { 'permalink' : 'centro-veterinario' }) }}">CENTRO VETERINÁRIO</a>
+			</div>
+
+			<div class="col-sm-3 pdl">
+				<a href="{{ path('_section', { 'permalink' : 'hospedes' }) }}">HÓSPEDES</a>
+			</div>
+
+			<div class="col-sm-3 pdl">
+				<a href="{{ path('_section', { 'permalink' : 'cuidados-com-seu-cao' }) }}">CUIDADOS COM SEU CÃO</a>
+			</div>
+
+			<div class="col-sm-3 pdl">
+				<a href="{{ path('_section', { 'permalink' : 'o-clube' }) }}">O CLUBE</a>
+			</div>
+		</div>
+	</div>
+{% endif %}
+
+
+{% if section.group == 'club-inner' %}
+	<div class="row">
+		<div class="submenu-component lg mg-5-top">
+			<div class="col-sm-4">
+				<a href="{{ path('_section', { 'permalink' : 'salatino-na-midia' }) }}">SALATINO NA MÍDIA</a>
+			</div>
+
+			<div class="col-sm-4 pdl pdr">
+				<a href="{{ path('_section', { 'permalink' : 'hotel-para-caes' }) }}">HOTEL PARA CÃES</a>
+			</div>
+
+			<div class="col-sm-4">
+				<a href="{{ path('_contact_us') }}">CONTATO</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="submenu-component">
+			<div class="col-sm-3">
+				<a href="{{ path('_section', { 'permalink' : 'centro-veterinario' }) }}">CENTRO VETERINÁRIO</a>
+			</div>
+
+			<div class="col-sm-3 pdl">
+				<a href="{{ path('_section', { 'permalink' : 'hospedes' }) }}">HÓSPEDES</a>
+			</div>
+
+			<div class="col-sm-3 pdl">
+				<a href="{{ path('_section', { 'permalink' : 'cuidados-com-seu-cao' }) }}">CUIDADOS COM SEU CÃO</a>
+			</div>
+
+			<div class="col-sm-3 pdl">
+				<a href="{{ path('_section', { 'permalink' : 'o-clube' }) }}">O CLUBE</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-12"><h2>{{ section.name }}</h2></div>
+	</div>
+{% endif %}

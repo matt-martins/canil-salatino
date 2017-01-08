@@ -36,9 +36,9 @@ class IndexController extends Nadeb_Controller_Front
 				$content = new Site_Model_Content();
 				$this->view->obj = $content->getHomeHighlights();
 			}
-
+			
 			$hd = new Site_Model_Headers();
-			$this->view->headers = $hd->getheaders( isset( $this->view->obj->content ) ? $this->view->obj->content[0]->idContent : null );
+			$this->view->headers = $hd->getheaders( $this->view->obj->content[0]->idContent );
 		}
 	}
 

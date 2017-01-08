@@ -1,0 +1,28 @@
+{% extends 'SalatinoCMSBundle::layout.html.twig' %}
+
+{% block content %}
+	{% block fos_user_content %}
+
+	<div class="row">
+		<div class="col-xs-12 col-md-10 col-md-offset-1">
+			<div class="page-header">
+				<h1>
+					{% set _path = ( model.category is null
+							? path('_cms_edit'      , { 'modelName' : modelName } ) 
+							: path('_cms_edit_categ', { 'modelName' : modelName, 'categ' : model.category } ) ) %}
+
+					{{ 'titles.listItem'|trans({}, 'CMS') }}
+					<a href="{{ _path }}" class="btn btn-md btn-primary pull-right">
+						{{ 'buttons.createNew'|trans({}, 'CMS') }}
+					</a>
+				</h1>
+			</div>
+		</div>
+
+		<div class="col-xs-12 col-md-10 col-md-offset-1">
+			{% block list %}{% endblock %}
+		</div>
+	</div>
+
+	{% endblock %}
+{% endblock %}

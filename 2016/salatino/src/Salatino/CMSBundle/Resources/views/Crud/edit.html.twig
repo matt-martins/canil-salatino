@@ -1,0 +1,53 @@
+{% extends 'SalatinoCMSBundle::layout.html.twig' %}
+{% form_theme form 'bootstrap_3_layout.html.twig'  %}
+
+{% block content %}
+	{% block fos_user_content %}
+
+	<div class="row">
+		<div class="col-xs-12 col-md-10 col-md-offset-1">
+			<div class="page-header">
+				<h1>
+					{{ 'titles.editItem'|trans({}, 'CMS') }}
+					<a href="{{ path('_cms_list', { 'modelName' : modelName, 'categ' : model.category } ) }}" 
+						class="btn btn-md btn-info pull-right">
+							{{ 'buttons.back'|trans({}, 'CMS') }}
+					</a>
+				</h1>
+			</div>
+		</div>
+
+		<div class="col-xs-12 col-sm-6 col-sm-offset-3">
+
+			{% if (model.category is null and id is null) %}
+
+				{% set _path = path('_cms_save_new', { 'modelName' : modelName } ) %}
+
+			{% elseif (model.category is null and id is not null) %}
+
+				{% set _path = path('_cms_update', { 'id' : id, 'modelName' : modelName } ) %}
+				
+			{% elseif (model.category is not null and id is null) %}
+			
+				{% set _path = path('_cms_save_new_categ', { 'modelName' : modelName, 'categ' : model.category } ) %}
+			
+			{% elseif (model.category is not null and id is not null) %}
+				{% set _path = path('_cms_update_categ',   { 'id' : id, 'modelName' : modelName, 'categ' : model.category } ) %}
+
+			{% endif %}
+
+
+			{{ form_start( form, { 'method': 'post', 'action': _path } ) }}
+
+				{{ form_widget( form )  }}
+
+				<div>
+					<button type="submit" class="btn btn-lg btn-primary pull-right">{{ 'buttons.save'|trans({}, 'CMS') }}</button>
+				</div>
+				
+			{{ form_end(form) }}
+		</div>
+	</div>
+
+	{% endblock %}
+{% endblock %}

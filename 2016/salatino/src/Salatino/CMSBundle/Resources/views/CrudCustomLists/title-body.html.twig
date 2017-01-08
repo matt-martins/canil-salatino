@@ -1,0 +1,36 @@
+{% extends 'SalatinoCMSBundle:Crud:list.html.twig' %}
+
+{% block list %}
+	<div class="row">
+	{% for row in list %}
+		{% set _path = ( model.category is null
+			? path('_cms_edit'      , { 'modelName' : modelName, 'id' : row.id } ) 
+			: path('_cms_edit_categ', { 'modelName' : modelName, 'categ' : model.category, 'id' : row.id } ) ) %}
+
+		<div class="col-sm-12 title-body rowItem">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<div class="row">
+							<a class="col-sm-10" href="{{ _path }}">
+								{{ row.title ? row.title : '[no title]' }}
+							</a>
+							<div class="col-sm-2">
+								<a class="pull-right removeItem" href="{{ path('_cms_delete', { 'id' : row.id, 'modelName' : modelName }) }}">
+									<span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span>
+								</a>
+							</div>
+						</div>
+					</h3>
+				</div>
+				<div class="panel-body">
+					<a href="{{ _path }}">
+						{{ row.body }}
+					</a>
+				</div>
+			</div>
+		</div><!-- /.col-sm-4 -->
+	
+	{% endfor %}
+	</div>
+{% endblock %}

@@ -10,12 +10,16 @@
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="apple-touch-icon" href="apple-touch-icon.png">
-			
-	<link href='https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+	
+
+	<link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300,700" rel="stylesheet" type="text/css">
 
 	<link rel="stylesheet" href="{{ asset('bundles/salatinosite/css/bootstrap.min.css') }}" />
 	<link rel="stylesheet" href="{{ asset('bundles/salatinosite/css/bootstrap-theme.min.css') }}" />
 	<link rel="stylesheet" href="{{ asset('bundles/salatinosite/css/main.css') }}" />
+	{% block headerCss %}
+	{% endblock %}
 
 </head>
 <body>
@@ -37,22 +41,48 @@
 
 			<div id="navbar" class="navbar-collapse collapse main-menu">
 				<ul class="nav navbar-nav">
-					<li><a href="#">Clube Salatino</a></li>
-					<li><a href="#">Italian Greyhound</a></li>
-					<li><a href="#">Teckel</a></li>
-					<li><a href="#">Papillon</a></li>
-					<li><a href="#">Contato</a></li>
+					<li><a href="{{ path('_section', { 'permalink' : 'clube-salatino' }) }}">Clube Salatino</a></li>
+					<li><a href="{{ path('_section', { 'permalink' : 'italian-greyhound' }) }}">Italian Greyhound</a></li>
+					<li><a href="{{ path('_section', { 'permalink' : 'teckel-pelo-longo' }) }}">Teckel</a></li>
+					<li><a href="{{ path('_section', { 'permalink' : 'papillon' }) }}">Papillon</a></li>
+					<li><a href="{{ path('_contact_us') }}">Contato</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">Facebook</a></li>
-					<li><a href="#">Instagram</a></li>
-					<li><a href="#">Pinterest</a></li>
+					<li>
+						<a href="tel:+55-11-9-7252-8466" class="hidden-md hidden-lg">+55 (11) 9 7252 8466</a>
+						<a href="#" class="hidden-xs hidden-sm no-link">+55 (11) 9 7252 8466</a>
+					</li>
+					<li><a target="_blank" href="https://www.facebook.com/clubesalatino">Facebook</a></li>
+					<li><a target="_blank" href="https://au.pinterest.com/salatinosclub/">Instagram</a></li>
+					<li><a target="_blank" href="https://www.instagram.com/clube_salatino/">Pinterest</a></li>
 				</ul>
 			</div>
 		</div>
 	</nav>
 
 	{% block content %}{% endblock %}
+
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="footer">
+					<ul class="footer-menu">
+						<li><a href="{{ path('_section', { 'permalink' : 'clube-salatino' }) }}">Clube Salatino</a></li>
+						<li><a href="{{ path('_section', { 'permalink' : 'italian-greyhound' }) }}">Italian Greyhound</a></li>
+						<li><a href="{{ path('_section', { 'permalink' : 'teckel-pelo-longo' }) }}">Teckel</a></li>
+						<li><a href="{{ path('_section', { 'permalink' : 'papillon' }) }}">Papillon</a></li>
+						<li><a href="{{ path('_section', { 'permalink' : 'salatino-na-midia' }) }}">Salatino na Mídia</a></li>
+						<li><a href="{{ path('_contact_us') }}">Contato</a></li>
+					</ul>
+					<p>
+						ROCHESTER OLIVEIRA E CLAUDIO GORNATI * EMBU DAS ARTES - SÃO PAULO - BRASIL <br> +55 (11) 4703-0262 +55 (11) 4616-3859
+						<br><br>
+						CANIL SALATINO © Todos os direitos reservados
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="{{ asset('bundles/salatinosite/js/vendor/jquery-1.11.2.min.js') }}"><\/script>')</script>

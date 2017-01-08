@@ -1,4 +1,30 @@
 services:
-#    salatino_site.example:
-#        class: Salatino\SiteBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+    model:
+        class: Salatino\SiteBundle\Core\Component\Model
+        calls:
+            - [setRequest, ["@request_stack"]]
+            - [setDoctrine, ["@doctrine"]]
+
+    twig.clearlink:
+        class: Salatino\SiteBundle\Twig\ClearLink
+        public: false
+        tags:
+            - { name: twig.extension }
+
+    twig.highlighttext:
+        class: Salatino\SiteBundle\Twig\HighlightText
+        public: false
+        tags:
+            - { name: twig.extension }
+
+    twig.limitstring:
+        class: Salatino\SiteBundle\Twig\LimitString
+        public: false
+        tags:
+            - { name: twig.extension }
+
+    twig.formathtml:
+        class: Salatino\SiteBundle\Twig\FormatHtml
+        public: false
+        tags:
+            - { name: twig.extension }

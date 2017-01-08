@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Prime Seafood CMS</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="apple-touch-icon" href="apple-touch-icon.png">
+			
+	<script src="{{ asset('bundles/primecms/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js') }}"></script>
+
+	<link rel="stylesheet" href="{{ asset('bundles/primecms/css/bootstrap.min.css') }}" />
+	<link rel="stylesheet" href="{{ asset('bundles/primecms/css/bootstrap-theme.min.css') }}" />
+	<link rel="stylesheet" href="{{ asset('bundles/primecms/css/spinner.css') }}" />
+	<link rel="stylesheet" href="{{ asset('bundles/primecms/css/main.css') }}" />
+
+	{#}
+	{% stylesheets filter='cssrewrite' output='assets/cms/css/main.css'
+		"bundles/primecms/css/bootstrap.min.css"
+		"bundles/primecms/css/bootstrap-theme.min.css"
+		"bundles/primecms/css/spinner.css"
+		"bundles/primecms/css/main.css"
+	%}
+		<link rel="stylesheet" href="{{ asset_url }}" />
+	{% endstylesheets %}
+	{#}
+
+</head>
+<body>
+	<!--[if lt IE 8]>
+		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+
+		<div class="container-fluid">
+
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">Prime Seafood CMS</a>
+		</div>
+
+		<div id="navbar" class="navbar-collapse collapse">
+			{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+			<ul class="nav navbar-nav">
+				<li class="pull-right dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+						{{ 'menu.item1' | trans({}, 'CMS') }} <span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href="{{ path('_cms_list',  { 'modelName' : 'home-carousel' } ) }}">{{ 'menu.item3' | trans({}, 'CMS') }}</a></li>
+						<li><a href="{{ path('_cms_list',  { 'modelName' : 'industry-carousel' } ) }}">{{ 'menu.item4' | trans({}, 'CMS') }}</a></li>
+						<li><a href="{{ path('_cms_list',  { 'modelName' : 'about-infos' } ) }}">{{ 'menu.item5' | trans({}, 'CMS') }}</a></li>
+						<li><a href="{{ path('_cms_list',  { 'modelName' : 'contact' } ) }}">{{ 'menu.item9' | trans({}, 'CMS') }}</a></li>
+						<li><a href="{{ path('_cms_list',  { 'modelName' : 'export' } ) }}">{{ 'menu.item10' | trans({}, 'CMS') }}</a></li>
+						<li role="separator" class="divider"></li>
+						<li class="dropdown-header">{{ 'menu.item2' | trans({}, 'CMS') }}</li>
+						<li><a href="{{ path('_cms_list',  { 'modelName' : 'products', 'categ' : 'lobster-tail' } ) }}">{{ 'menu.item6' | trans({}, 'CMS') }}</a></li>
+						<li><a href="{{ path('_cms_list',  { 'modelName' : 'products', 'categ' : 'frozen-lobster' } ) }}">{{ 'menu.item7' | trans({}, 'CMS') }}</a></li>
+						<li><a href="{{ path('_cms_list',  { 'modelName' : 'products', 'categ' : 'frozen-fish' } ) }}">{{ 'menu.item8' | trans({}, 'CMS') }}</a></li>
+				</ul>
+				</li>
+			</ul>
+
+			<ul class="nav navbar-nav navbar-right">
+				<li class="pull-right dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+						{{ 'logged_in'|trans({'%username%': app.user.name}, 'CMS') }} <span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						{# <li><a href="#">My Info</a></li> #}
+						{# <li><a href="#">New User</a></li> #}
+						<li role="separator" class="divider"></li>
+						{# <li class="dropdown-header">Nav header</li> #}
+						{# {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} | #}
+						<li><a href="{{ path('fos_user_security_logout') }}">{{ 'logout' | trans({}, 'FOSUserBundle') }}</a></li>
+				</ul>
+				</li>
+			</ul>
+			{% endif %}
+		</div><!--/.nav-collapse -->
+
+		</div>
+    </nav>
+
+	<div class="container-fluid">
+		<div class="row">
+			{% for type, messages in app.session.flashBag.all %}
+				{% for message in messages %}
+					<div class="alert alert-warning {{ type }} messagesTopMargin">
+						{{ message|trans({}, 'FOSUserBundle') }}
+					</div>
+				{% endfor %}
+			{% endfor %}
+		</div>
+
+		<div class="wrapperTopMargin">
+			{% block fos_user_content %}
+			{% endblock fos_user_content %}
+		</div>
+	</div>
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="{{ asset('bundles/primesite/js/vendor/jquery-1.11.2.min.js') }}"><\/script>')</script>
+	<script src="{{ asset('bundles/primecms/js/vendor/holder.js') }}"></script>
+	<script src="{{ asset('bundles/primecms/js/vendor/bootstrap.min.js') }}"></script>
+	<script src="{{ asset('bundles/primecms/js/main.js') }}"></script>
+</body>
+</html>
