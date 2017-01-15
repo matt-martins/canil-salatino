@@ -17,9 +17,9 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Salatino\SiteBundle\SalatinoSiteBundle(),
-            // new Salatino\CMSBundle\SalatinoCMSBundle(),
+            new Salatino\CMSBundle\SalatinoCMSBundle(),
             new Salatino\EntityBundle\SalatinoEntityBundle(),
-            // new FOS\UserBundle\FOSUserBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

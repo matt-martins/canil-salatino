@@ -1,0 +1,34 @@
+titles:
+    registration  : 'REGISTRATION'
+    login         : 'LOGIN'
+    listItem      : 'LIST'
+    editItem      : 'EDIT'
+
+logged_in: 'Hi, %username%'
+
+menu:
+    item1  : 'CMS OPTIONS'
+    item2  : 'PRODUCTS'
+    item3  : 'Home carousel'
+    item4  : 'Industry carousel'
+    item5  : 'About Infos'
+    item6  : 'Lobster Tail'
+    item7  : 'Frozen Lobster'
+    item8  : 'Frozen Fish '
+    item9  : 'Contact'
+    item10 : 'Export'
+
+buttons:
+    save      : 'SAVE'
+    createNew : 'CREATE NEW'
+    back      : 'BACK'
+
+form:
+    labels:
+        title   : 'TITLE'
+        body    : 'BODY'
+        titleEN : 'TITLE (EN)'
+        bodyEN  : 'BODY (EN)'
+        image1  : 'IMAGE'
+        file    : 'TECHNICAL SPECS'
+        YTVid   : 'YOUYUBE VIDEO HASH'

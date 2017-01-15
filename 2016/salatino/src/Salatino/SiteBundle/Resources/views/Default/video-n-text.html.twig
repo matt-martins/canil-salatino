@@ -1,0 +1,63 @@
+{% extends "SalatinoSiteBundle::layout.html.twig" %}
+
+{% block headerCss %}
+<style>
+	.breeds-component .breed-machos:before   { background: url('{{ asset('uploads/') }}{{ post.picture }}') center no-repeat; background-size: 110%; }
+	.breeds-component .breed-machos:after    { background: url('{{ asset('uploads/') }}{{ post.picture }}') center no-repeat; background-size: 100%; }
+
+	.breeds-component .breed-femeas:before   { background: url('{{ asset('uploads/') }}{{ post.smallPicture }}') center no-repeat; background-size: 110%; }
+	.breeds-component .breed-femeas:after    { background: url('{{ asset('uploads/') }}{{ post.smallPicture }}') center no-repeat; background-size: 100%; }
+
+	.breeds-component .breed-filhotes:before { background: url('{{ asset('uploads/') }}{{ post.bigPicture }}') center no-repeat; background-size: 110%; }
+	.breeds-component .breed-filhotes:after  { background: url('{{ asset('uploads/') }}{{ post.bigPicture }}') center no-repeat; background-size: 100%; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+	
+	{% embed "SalatinoSiteBundle::Snippet/MainSlider.html.twig" %}{% endembed %}
+
+	{% embed "SalatinoSiteBundle::Snippet/SubMenuGroup.html.twig" %}{% endembed %}
+
+	<div class="row">
+		{% if post.video %}
+		<div class="col-sm-12 video-background">
+			<div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
+				<iframe class="video-frame" width="100%" height="400" src="https://www.youtube.com/embed/{{ post.video }}?showinfo=0" frameborder="0" allowfullscreen></iframe>
+			</div>
+		</div>
+		{% endif %}
+
+		<div class="col-sm-12">
+			{% if post.picture %}
+			<img class="highlight-image" src="{{ asset('uploads/') }}{{ post.picture }}" alt="{{ post.title }}">
+			{% endif %}
+
+			<div class="image-n-text-body">
+				{% if pedigree %}
+					{{ post.body | formatHtml | raw }}
+				{% else %}
+					{% if post.title != section.name %}
+						<h3>{{ post.title }}</h3>
+					{% endif %}
+
+					<p>{{ post.body | formatHtml | raw }}</p>
+				{% endif %}
+
+				<br style="clear: left" />
+			</div>
+		</div>
+	</div>
+
+	{% if pedigree %}
+		{% embed "SalatinoSiteBundle::Snippet/Pedigree.html.twig" %}{% endembed %}
+	{% endif %}
+	
+	{% embed "SalatinoSiteBundle::Snippet/Instagram.html.twig" %}{% endembed %}
+
+	{% embed "SalatinoSiteBundle::Snippet/PartnersNews.html.twig" %}{% endembed %}
+
+</div>
+
+{% endblock %}

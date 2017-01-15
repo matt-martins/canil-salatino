@@ -1,17 +1,17 @@
 <?php
 namespace Salatino\CMSBundle\Model;
 
-use SalatinoCMSBundle\Model\Component\ModelComponent;
+use Salatino\CMSBundle\Model\Component\ModelComponent;
 
-class Products extends ModelComponent
+class Content extends ModelComponent
 {
-	public $grid = 'SalatinoCMSBundle:CrudCustomLists:title-body.html.twig';
+	public $grid = 'SalatinoCMSBundle:CrudCustomLists:title-image.html.twig';
 
 	public function listAll()
 	{
-		$repo   = $this->doctrine->getRepository( 'SalatinoCMSBundle:Content' );
+		$repo   = $this->doctrine->getRepository( 'SalatinoEntityBundle:Content' );
 		$rows   = $repo->findBy(
-							array( 'isActive' => 1, 'session'  => $this->getCategory() ),
+							array( 'isActive' => 1, 'section'  => $this->getCategory() ),
 							array( 'sequence' => 'ASC', 'id' => 'ASC' )
 						);
 
@@ -20,8 +20,8 @@ class Products extends ModelComponent
 
 	public function generateForm( $id )
 	{
-		$content = $this->getEntity( 'SalatinoCMSBundle:Content', $id );
-		$form    = $this->formFactory->create( 'SalatinoCMSBundle\Form\Products', $content );
+		$content = $this->getEntity( 'SalatinoEntityBundle:Content', $id );
+		$form    = $this->formFactory->create( 'Salatino\CMSBundle\Form\Content', $content );
 
 		return $form;
 	}
@@ -30,12 +30,12 @@ class Products extends ModelComponent
 	{
 		$request = $this->getPost();
 		
-		$content = $this->getEntity( 'SalatinoCMSBundle:Content', $id );
+		$content = $this->getEntity( 'SalatinoEntityBundle:Content', $id );
 		$content->setTitle( $this->form['title']->getData() );
 		$content->setEnTitle( $this->form['enTitle']->getData() );
 		$content->setEnBody( $this->form['enBody']->getData() );
 		$content->setBody( $this->form['body']->getData() );
-		$content->setSession( $this->getCategory() );
+		$content->setSection( $this->getCategory() );
 		$content->setIsActive( '1' );
 
 		if( $this->form['image1']->getData() != null )
@@ -49,7 +49,7 @@ class Products extends ModelComponent
 
 	public function delete( $id )
 	{
-		$content = $this->getEntity( 'SalatinoCMSBundle:Content', $id );
+		$content = $this->getEntity( 'SalatinoEntityBundle:Content', $id );
 
 		$em = $this->doctrine->getManager();
 		$em->remove( $content );

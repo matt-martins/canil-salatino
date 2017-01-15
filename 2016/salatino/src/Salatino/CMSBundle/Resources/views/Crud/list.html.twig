@@ -11,9 +11,9 @@
 							? path('_cms_edit'      , { 'modelName' : modelName } ) 
 							: path('_cms_edit_categ', { 'modelName' : modelName, 'categ' : model.category } ) ) %}
 
-					{{ 'titles.listItem'|trans({}, 'CMS') }}
+					{{ 'titles.list'|trans({}, 'CMS') }}
 					<a href="{{ _path }}" class="btn btn-md btn-primary pull-right">
-						{{ 'buttons.createNew'|trans({}, 'CMS') }}
+						{{ 'button.new'|trans({}, 'CMS') }}
 					</a>
 				</h1>
 			</div>

@@ -7,7 +7,7 @@
 			? path('_cms_edit'      , { 'modelName' : modelName, 'id' : row.id } ) 
 			: path('_cms_edit_categ', { 'modelName' : modelName, 'categ' : model.category, 'id' : row.id } ) ) %}
 
-		<div class="col-sm-4 title-image1 rowItem">
+		<div class="col-sm-4 title-picture rowItem">
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title">
@@ -28,10 +28,10 @@
 					<a href="{{ _path }}">
 						<img 
 							data-src="holder.js/450x200?text=no%20image" 
-							{% if row.image1 is not null %}
-								src="{{ asset('/upload/') }}{{ row.image1 }}" 
+							{% if row.picture is not null %}
+								src="{{ asset('/uploads/') }}{{ row.picture }}" 
 							{% endif %}
-							alt="{{row.image1}}" 
+							alt="{{row.picture}}" 
 							class="img-thumbnail">
 					</a>
 				</div>

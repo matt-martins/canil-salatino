@@ -5,7 +5,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use SalatinoCMSBundle\Core\DataModelFactory;
+use Salatino\CMSBundle\Core\DataModelFactory;
 
 
 class CMSCrudController extends Controller
@@ -15,7 +15,7 @@ class CMSCrudController extends Controller
      */
     public function listAction( $modelName, $categ = null )
     {
-        $dataModel = DataModelFactory::get( 'SalatinoCMSBundle\Model', $modelName );
+        $dataModel = DataModelFactory::get( 'Salatino\CMSBundle\Model', $modelName );
         $model     = $this->container->get('cms.model')->get( $dataModel );
         $model->setCategory( $categ );
 
@@ -33,7 +33,7 @@ class CMSCrudController extends Controller
      */
     public function editAction( $modelName, $id = null, $categ = null )
     {
-        $dataModel = DataModelFactory::get( 'SalatinoCMSBundle\Model', $modelName );
+        $dataModel = DataModelFactory::get( 'Salatino\CMSBundle\Model', $modelName );
         $form      = $this->container->get('cms.form')->get( $dataModel, $id );
         $model     = $this->container->get('cms.model')->get( $dataModel );
         $model->setCategory( $categ );
@@ -54,14 +54,14 @@ class CMSCrudController extends Controller
      */
     public function saveAction( Request $request, $modelName, $id = null, $categ = null )
     {
-        $dataModel = DataModelFactory::get( 'SalatinoCMSBundle\Model', $modelName );
+        $dataModel = DataModelFactory::get( 'Salatino\CMSBundle\Model', $modelName );
         $form      = $this->container->get('cms.form')->get( $dataModel, $id );
 
         $form->handleRequest($request);
 
         if ( $form->isSubmitted() && $form->isValid() ) 
         {
-            $dataModel = DataModelFactory::get( 'SalatinoCMSBundle\Model', $modelName );
+            $dataModel = DataModelFactory::get( 'Salatino\CMSBundle\Model', $modelName );
             $model     = $this->container->get('cms.model')->get( $dataModel );
             
             $model->setCategory( $categ );
@@ -83,7 +83,7 @@ class CMSCrudController extends Controller
      */
     public function deleteAction( Request $request, $modelName, $id = null )
     {
-    	$dataModel = DataModelFactory::get( 'SalatinoCMSBundle\Model', $modelName );
+    	$dataModel = DataModelFactory::get( 'Salatino\CMSBundle\Model', $modelName );
         $model     = $this->container->get('cms.model')->get( $dataModel );
         $model->delete( $id );
 

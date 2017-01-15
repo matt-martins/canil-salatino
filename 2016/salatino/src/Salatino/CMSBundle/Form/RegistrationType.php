@@ -1,5 +1,5 @@
 <?php
-// src/SalatinoCMSBundle/Form/RegistrationType.php
+// src/Salatino/CMSBundle/Form/RegistrationType.php
 
 namespace Salatino\CMSBundle\Form;
 

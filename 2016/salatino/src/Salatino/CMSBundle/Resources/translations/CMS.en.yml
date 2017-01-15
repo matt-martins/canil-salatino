@@ -1,34 +1,32 @@
+cmsTitle : 'CMS SALATINO'
 titles:
     registration  : 'REGISTRATION'
     login         : 'LOGIN'
-    listItem      : 'LIST'
-    editItem      : 'EDIT'
+    list          : 'LISTA'
+    edit          : 'EDITAR'
 
 logged_in: 'Hi, %username%'
 
 menu:
-    item1  : 'CMS OPTIONS'
-    item2  : 'PRODUCTS'
-    item3  : 'Home carousel'
-    item4  : 'Industry carousel'
-    item5  : 'About Infos'
-    item6  : 'Lobster Tail'
-    item7  : 'Frozen Lobster'
-    item8  : 'Frozen Fish '
-    item9  : 'Contact'
-    item10 : 'Export'
+    home         : 'HOME'
+    italian      : 'ITALIAN'
+    teckel       : 'TECKEL'
+    papillon     : 'PAPILLON'
+    male         : 'MACHOS'
+    female       : 'FEMEAS'
+    puppy        : 'FILHOTES'
+    standards    : 'PADRÕES'
+    history      : 'HISTÓRIA'
 
-buttons:
-    save      : 'SAVE'
-    createNew : 'CREATE NEW'
-    back      : 'BACK'
+button:
+    save      : 'SALVAR'
+    new       : 'CRIAR NOVO'
+    back      : 'VOLTAR'
 
-form:
+forms:
     labels:
-        title   : 'TITLE'
-        body    : 'BODY'
-        titleEN : 'TITLE (EN)'
-        bodyEN  : 'BODY (EN)'
-        image1  : 'IMAGE'
-        file    : 'TECHNICAL SPECS'
-        YTVid   : 'YOUYUBE VIDEO HASH'
+        title        : 'TITULO'
+        body         : 'CONTEÚDO'
+        smallPicture : 'IMAGEM PEQUENA'
+        picture      : 'IMAGEM'
+        YTVid        : 'YOUYUBE VIDEO HASH'

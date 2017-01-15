@@ -1,19 +1,19 @@
 services:
 #    prime_cms.example:
-#        class: SalatinoCMSBundle\Example
+#        class: Salatino\CMSBundle\Example
 #        arguments: [@service_id, "plain_value", %parameter%]
 
 
-    prime_cms.form.registration:
-        class: SalatinoCMSBundle\Form\RegistrationType
+    salatino_cms.form.registration:
+        class: Salatino\CMSBundle\Form\RegistrationType
         arguments: [ %fos_user.model.user.class% ]
         tags:
             - { name: form.type, alias: fos_user_registration }
 
     cms.form:
-        class: SalatinoCMSBundle\Services\FormBuilder
+        class: Salatino\CMSBundle\Services\FormBuilder
         arguments: [ '@router', '@doctrine', '@form.factory' ]
 
     cms.model:
-        class: SalatinoCMSBundle\Services\ModelFactory
+        class: Salatino\CMSBundle\Services\ModelFactory
         arguments: [ '@router', '@doctrine', '@request_stack', '%kernel.root_dir%' ]

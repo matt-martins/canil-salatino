@@ -11,19 +11,19 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="apple-touch-icon" href="apple-touch-icon.png">
 			
-	<script src="{{ asset('bundles/primecms/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js') }}"></script>
+	<script src="{{ asset('bundles/salatinocms/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js') }}"></script>
 
-	<link rel="stylesheet" href="{{ asset('bundles/primecms/css/bootstrap.min.css') }}" />
-	<link rel="stylesheet" href="{{ asset('bundles/primecms/css/bootstrap-theme.min.css') }}" />
-	<link rel="stylesheet" href="{{ asset('bundles/primecms/css/spinner.css') }}" />
-	<link rel="stylesheet" href="{{ asset('bundles/primecms/css/main.css') }}" />
+	<link rel="stylesheet" href="{{ asset('bundles/salatinocms/css/bootstrap.min.css') }}" />
+	<link rel="stylesheet" href="{{ asset('bundles/salatinocms/css/bootstrap-theme.min.css') }}" />
+	<link rel="stylesheet" href="{{ asset('bundles/salatinocms/css/spinner.css') }}" />
+	<link rel="stylesheet" href="{{ asset('bundles/salatinocms/css/main.css') }}" />
 
 	{#}
 	{% stylesheets filter='cssrewrite' output='assets/cms/css/main.css'
-		"bundles/primecms/css/bootstrap.min.css"
-		"bundles/primecms/css/bootstrap-theme.min.css"
-		"bundles/primecms/css/spinner.css"
-		"bundles/primecms/css/main.css"
+		"bundles/salatinocms/css/bootstrap.min.css"
+		"bundles/salatinocms/css/bootstrap-theme.min.css"
+		"bundles/salatinocms/css/spinner.css"
+		"bundles/salatinocms/css/main.css"
 	%}
 		<link rel="stylesheet" href="{{ asset_url }}" />
 	{% endstylesheets %}
@@ -47,18 +47,17 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">Prime Seafood CMS</a>
+			<a class="navbar-brand" href="#">{{ 'cmsTitle' | trans({}, 'CMS') }}</a>
 		</div>
 
 		<div id="navbar" class="navbar-collapse collapse">
 			{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 			<ul class="nav navbar-nav">
-				<li class="pull-right dropdown">
+				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-						{{ 'menu.item1' | trans({}, 'CMS') }} <span class="caret"></span>
+						{{ 'menu.home' | trans({}, 'CMS') }} <span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="{{ path('_cms_list',  { 'modelName' : 'home-carousel' } ) }}">{{ 'menu.item3' | trans({}, 'CMS') }}</a></li>
 						<li><a href="{{ path('_cms_list',  { 'modelName' : 'industry-carousel' } ) }}">{{ 'menu.item4' | trans({}, 'CMS') }}</a></li>
 						<li><a href="{{ path('_cms_list',  { 'modelName' : 'about-infos' } ) }}">{{ 'menu.item5' | trans({}, 'CMS') }}</a></li>
 						<li><a href="{{ path('_cms_list',  { 'modelName' : 'contact' } ) }}">{{ 'menu.item9' | trans({}, 'CMS') }}</a></li>
@@ -68,7 +67,43 @@
 						<li><a href="{{ path('_cms_list',  { 'modelName' : 'products', 'categ' : 'lobster-tail' } ) }}">{{ 'menu.item6' | trans({}, 'CMS') }}</a></li>
 						<li><a href="{{ path('_cms_list',  { 'modelName' : 'products', 'categ' : 'frozen-lobster' } ) }}">{{ 'menu.item7' | trans({}, 'CMS') }}</a></li>
 						<li><a href="{{ path('_cms_list',  { 'modelName' : 'products', 'categ' : 'frozen-fish' } ) }}">{{ 'menu.item8' | trans({}, 'CMS') }}</a></li>
-				</ul>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+						{{ 'menu.italian' | trans({}, 'CMS') }} <span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href="{{ path('_cms_list',  { 'modelName' : 'pedigree', 'categ' : 30 } ) }}">{{ 'menu.male' | trans({}, 'CMS') }}</a></li>
+						<li><a href="{{ path('_cms_list',  { 'modelName' : 'pedigree', 'categ' : 33 } ) }}">{{ 'menu.female' | trans({}, 'CMS') }}</a></li>
+						<li><a href="{{ path('_cms_list',  { 'modelName' : 'content', 'categ' : 36 } ) }}">{{ 'menu.puppy' | trans({}, 'CMS') }}</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="{{ path('_cms_list',  { 'modelName' : 'products', 'categ' : 'lobster-tail' } ) }}">{{ 'menu.standards' | trans({}, 'CMS') }}</a></li>
+						<li><a href="{{ path('_cms_list',  { 'modelName' : 'products', 'categ' : 'frozen-lobster' } ) }}">{{ 'menu.history' | trans({}, 'CMS') }}</a></li>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+						{{ 'menu.teckel' | trans({}, 'CMS') }} <span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href="{{ path('_cms_list',  { 'modelName' : 'pedigree', 'categ' : 35 } ) }}">{{ 'menu.male' | trans({}, 'CMS') }}</a></li>
+						<li><a href="{{ path('_cms_list',  { 'modelName' : 'pedigree', 'categ' : 32 } ) }}">{{ 'menu.female' | trans({}, 'CMS') }}</a></li>
+						<li><a href="{{ path('_cms_list',  { 'modelName' : 'content', 'categ' : 38 } ) }}">{{ 'menu.puppy' | trans({}, 'CMS') }}</a></li>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+						{{ 'menu.papillon' | trans({}, 'CMS') }} <span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href="{{ path('_cms_list',  { 'modelName' : 'pedigree', 'categ' : 31 } ) }}">{{ 'menu.male' | trans({}, 'CMS') }}</a></li>
+						<li><a href="{{ path('_cms_list',  { 'modelName' : 'pedigree', 'categ' : 34 } ) }}">{{ 'menu.female' | trans({}, 'CMS') }}</a></li>
+						<li><a href="{{ path('_cms_list',  { 'modelName' : 'content', 'categ' : 37 } ) }}">{{ 'menu.puppy' | trans({}, 'CMS') }}</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="{{ path('_cms_list',  { 'modelName' : 'products', 'categ' : 'lobster-tail' } ) }}">{{ 'menu.standards' | trans({}, 'CMS') }}</a></li>
+						<li><a href="{{ path('_cms_list',  { 'modelName' : 'products', 'categ' : 'frozen-lobster' } ) }}">{{ 'menu.history' | trans({}, 'CMS') }}</a></li>
+					</ul>
 				</li>
 			</ul>
 
@@ -78,7 +113,7 @@
 						{{ 'logged_in'|trans({'%username%': app.user.name}, 'CMS') }} <span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
-						{# <li><a href="#">My Info</a></li> #}
+						<li><a href="#">My Info</a></li>
 						{# <li><a href="#">New User</a></li> #}
 						<li role="separator" class="divider"></li>
 						{# <li class="dropdown-header">Nav header</li> #}
@@ -112,8 +147,8 @@
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="{{ asset('bundles/primesite/js/vendor/jquery-1.11.2.min.js') }}"><\/script>')</script>
-	<script src="{{ asset('bundles/primecms/js/vendor/holder.js') }}"></script>
-	<script src="{{ asset('bundles/primecms/js/vendor/bootstrap.min.js') }}"></script>
-	<script src="{{ asset('bundles/primecms/js/main.js') }}"></script>
+	<script src="{{ asset('bundles/salatinocms/js/vendor/holder.js') }}"></script>
+	<script src="{{ asset('bundles/salatinocms/js/vendor/bootstrap.min.js') }}"></script>
+	<script src="{{ asset('bundles/salatinocms/js/main.js') }}"></script>
 </body>
 </html>

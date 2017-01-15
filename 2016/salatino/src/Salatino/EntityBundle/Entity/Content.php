@@ -205,9 +205,12 @@ class Content extends EntityComponent
      */
     public function setPicture($picture)
     {
-        $this->picture = $picture;
+        if( $picture !== null )
+        {
+            $this->picture = $picture;
 
-        return $this;
+            return $this;
+        }
     }
 
     /**
@@ -229,9 +232,12 @@ class Content extends EntityComponent
      */
     public function setSmallPicture($smallPicture)
     {
-        $this->smallPicture = $smallPicture;
+        if( $smallPicture !== null )
+        {
+            $this->smallPicture = $smallPicture;
 
-        return $this;
+            return $this;
+        }
     }
 
     /**
@@ -397,9 +403,12 @@ class Content extends EntityComponent
      */
     public function setBigPicture($bigPicture)
     {
-        $this->bigPicture = $bigPicture;
+        if( $bigPicture !== null )
+        {
+            $this->bigPicture = $bigPicture;
 
-        return $this;
+            return $this;
+        }
     }
 
     /**

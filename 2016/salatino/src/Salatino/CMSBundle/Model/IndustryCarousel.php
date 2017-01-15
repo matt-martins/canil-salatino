@@ -1,7 +1,7 @@
 <?php
 namespace Salatino\CMSBundle\Model;
 
-use SalatinoCMSBundle\Model\Component\ModelComponent;
+use Salatino\CMSBundle\Model\Component\ModelComponent;
 
 class IndustryCarousel extends ModelComponent
 {
