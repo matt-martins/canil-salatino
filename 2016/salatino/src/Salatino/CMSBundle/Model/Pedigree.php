@@ -25,8 +25,6 @@ class Pedigree extends ModelComponent
 				        ->select('n, o')
 				        ->from('SalatinoEntityBundle:Content', 'n')
 				        ->innerJoin('SalatinoEntityBundle:Pedigree','o')
-				        // ->innerJoin('rg.profiles','p')
-				        // ->innerJoin('p.users','u')
 				        ->where('n.id = :id AND o.id = :id')
 				        ->setParameter('id', $id)
 				        ->getQuery()

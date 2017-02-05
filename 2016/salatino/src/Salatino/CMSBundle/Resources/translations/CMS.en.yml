@@ -27,6 +27,7 @@ menu:
     champs       : 'Campeões'
     videos       : 'Videos'
     cover        : 'Capa'
+    carousel     : 'Carrossel'
 
 button:
     save      : 'SALVAR'

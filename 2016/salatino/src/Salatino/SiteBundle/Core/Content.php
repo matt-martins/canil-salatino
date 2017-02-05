@@ -79,6 +79,14 @@ class Content extends CoreComponent
 		}
 	}
 
+	public function getCarousel( $group )
+	{
+		$group = explode( '-', $group );
+		$group = 'carousel-' . $group[0];
+
+		return $this->getContentByTemplate( $group );
+	}
+
 	private function getSectionByLink( $permalink )
 	{
 		$sql = 'SELECT n
@@ -107,6 +115,21 @@ class Content extends CoreComponent
 				ORDER BY n.sequence ASC';
 		
 		$result = $this->dql( $sql )->setParameter('sectionId', $sectionId )->getResult();
+		
+		return $result;
+	}
+
+	private function getContentByTemplate( $template )
+	{
+		$sql = 'SELECT n
+				FROM
+					SalatinoEntityBundle:Content n
+				WHERE
+					n.isActive  = 1 AND
+					n.template  = :template
+				ORDER BY n.sequence ASC';
+		
+		$result = $this->dql( $sql )->setParameter('template', $template )->getResult();
 		
 		return $result;
 	}
@@ -160,162 +183,5 @@ class Content extends CoreComponent
 		
 		return $result;
 	}
-	
-	// public function getNextOneContentById( $id )
-	// {
-	// 	$sql = 'SELECT n, o
-	// 			FROM
-	// 				SalatinoEntityBundle:Content  n
-	// 				LEFT JOIN n.content o
-	// 			WHERE
-	// 				n.isActive = 1 AND
-	// 				n.id > :id
-	// 			ORDER BY o.sequence ASC';
-		
-	// 	$result = $this->dql( $sql )->setParameter('id', $id )->setMaxResults(1)->getOneOrNullResult();
-		
-	// 	return $result;
-	// }
-	
-	// public function getSessionOneContent( $session )
-	// {
-	// 	$result = $this->getSessionContent( $session );
-		
-	// 	return $result[0];
-	// }
-
-	// public function getSessionRandomContent( $session )
-	// {
-	// 	$query = $this->doctrine->getRepository('SalatinoEntityBundle:Content')->createQueryBuilder('n');
-		
-	// 	$select = $query
-	// 				->where('n.isActive = 1')
-	// 				->andWhere('n.session = :session')
-	// 				->setParameter( 'session', $session )
-	// 				->setMaxResults( 10 )
-	// 				->getQuery()
-	// 				->execute()
-	// 			;
-		
-	// 	return $select[ rand( 0, count($select)-1 ) ];
-	// }
-
-	// public function getSessionContent( $session )
-	// {
-	// 	$sql = 'SELECT n, o
-	// 			FROM
-	// 				SalatinoEntityBundle:Content  n
-	// 				LEFT JOIN n.content o
-	// 			WHERE
-	// 				n.isActive = 1 AND
-	// 				n.session = :session
-	// 			ORDER BY o.sequence ASC';
-		
-	// 	$result = $this->dql( $sql )->setParameter('session', $session )->getResult();
-		
-	// 	return $result;
-	// }
-
-	// public function getLestFiveBlogPosts()
-	// {
-	// 	$sql = 'SELECT n, o
-	// 			FROM
-	// 				SalatinoEntityBundle:Content  n
-	// 				LEFT JOIN n.content o
-	// 			WHERE
-	// 				n.isActive = 1 AND
-	// 				n.session = \'blog\'
-	// 			ORDER BY o.sequence ASC';
-		
-	// 	$result = $this->dql( $sql )->setParameter('session', $session )->setMaxResults( 5 )->getResult();
-		
-	// 	return $result;
-	// }
-
-	// public function getBlogHistory()
-	// {
-	// 	$sql = 'SELECT SUBSTRING(n.dateCreated, 1, 4) as Year, SUBSTRING(n.dateCreated, 6, 2) as Month, count( n.id ) as Total, n.dateCreated
-	// 			FROM
-	// 				SalatinoEntityBundle:Content n
-	// 			WHERE
-	// 				n.isActive = 1 AND
-	// 				n.session = :session
-	// 			GROUP BY Month, Year';
-		
-	// 	$result = $this->dql( $sql )->setParameter('session', 'blog' )->getResult();
-		
-	// 	foreach ( $result as $key => $value )
-	// 	{
-	// 		$days = $this->getBlogHistoryDays( $value['Month'], $value['Year'] );
-	// 		$result[ $key ]['days'] = $days;
-	// 	}
-		
-	// 	return $result;
-	// }
-	
-	// private function getBlogHistoryDays( $month, $year )
-	// {
-	// 	$sql = 'SELECT n
-	// 			FROM
-	// 				SalatinoEntityBundle:Content n
-	// 			WHERE
-	// 				n.isActive = 1 AND
-	// 				SUBSTRING(n.dateCreated, 1, 4) = :year AND
-	// 				SUBSTRING(n.dateCreated, 6, 2) = :month';
-		
-	// 	$result = $this->dql( $sql )->setParameters( array( 'month' => $month, 'year' => $year ) )->getResult();
-		
-	// 	return $result;
-	// }
-
-	// public function getBlogCategories()
-	// {
-	// 	$sql = 'SELECT n.smallDescription, count( n.smallDescription ) as Total 
-	// 			FROM
-	// 				SalatinoEntityBundle:Content n
-	// 			WHERE
-	// 				n.isActive = 1 AND
-	// 				n.session = :session
-	// 			GROUP BY n.smallDescription';
-		
-	// 	$result = $this->dql( $sql )->setParameter('session', 'blog' )->getResult();
-		
-	// 	return $result;
-	// }
-
-	// public function getBlogPostsByCategories( $filter )
-	// {
-	// 	$sql = 'SELECT n 
-	// 			FROM
-	// 				SalatinoEntityBundle:Content n
-	// 			WHERE
-	// 				n.isActive = 1 AND
-	// 				n.smallDescription LIKE :filter';
-		
-	// 	$result = $this->dql( $sql )->setParameter( 'filter', '%'. $filter . '%' )->getResult();
-		
-	// 	return $result;
-	// }
-
-	// public function getBlogFilteredPosts( $session )
-	// {
-	// 	$sql = 'SELECT n 
-	// 			FROM
-	// 				SalatinoEntityBundle:Content n
-	// 			WHERE
-	// 				n.isActive = 1 AND
-	// 				n.title LIKE :session';
-		
-	// 	$result = $this->dql( $sql )->setParameter( 'session', $session )->getResult();
-		
-	// 	return $result;
-	// }
-
-	// private function getRepository()
-	// {
-	// 	$repository = $this->doctrine->getRepository('SalatinoEntityBundle:Content');
-	
-	// 	return $repository;
-	// }
 	
 }

@@ -53,7 +53,7 @@
 		<div id="navbar" class="navbar-collapse collapse">
 			{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 			<ul class="nav navbar-nav">
-				<li class="dropdown">
+				<li class="dropdown hidden">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 						{{ 'menu.home' | trans({}, 'CMS') }} <span class="caret"></span>
 					</a>
@@ -76,6 +76,8 @@
 					<ul class="dropdown-menu">
 						<li><a href="{{ path('_cms_edit_categ', { 'modelName' : 'cover', 'categ' : 6, 'id' : 244 } ) }}">{{ 'menu.cover' | trans({}, 'CMS') }}</a></li>
 						<li role="separator" class="divider"></li>
+						<li><a href="{{ path('_cms_list', { 'modelName' : 'carousel', 'categ' : 'carousel-club' } ) }}">{{ 'menu.carousel' | trans({}, 'CMS') }}</a></li>
+						<li role="separator" class="divider"></li>
 						<li><a href="{{ path('_cms_list',  { 'modelName' : 'content', 'categ' : 12 } ) }}">{{ 'menu.midia' | trans({}, 'CMS') }}</a></li>
 						<li><a href="{{ path('_cms_edit_categ',  { 'modelName' : 'single-content', 'categ' : 28, 'id' : 6 } ) }}">{{ 'menu.hostel' | trans({}, 'CMS') }}</a></li>
 						<li><a href="{{ path('_cms_edit_categ',  { 'modelName' : 'single-content', 'categ' : 7, 'id' : 16 } ) }}">{{ 'menu.vetCenter' | trans({}, 'CMS') }}</a></li>
@@ -90,6 +92,8 @@
 					</a>
 					<ul class="dropdown-menu">
 						<li><a href="{{ path('_cms_edit_categ', { 'modelName' : 'cover', 'categ' : 23, 'id' : 15 } ) }}">{{ 'menu.cover' | trans({}, 'CMS') }}</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="{{ path('_cms_list', { 'modelName' : 'carousel', 'categ' : 'carousel-italian' } ) }}">{{ 'menu.carousel' | trans({}, 'CMS') }}</a></li>
 						<li role="separator" class="divider"></li>
 						<li><a href="{{ path('_cms_list',  { 'modelName' : 'pedigree', 'categ' : 30 } ) }}">{{ 'menu.male' | trans({}, 'CMS') }}</a></li>
 						<li><a href="{{ path('_cms_list',  { 'modelName' : 'pedigree', 'categ' : 33 } ) }}">{{ 'menu.female' | trans({}, 'CMS') }}</a></li>
@@ -106,6 +110,8 @@
 					<ul class="dropdown-menu">
 						<li><a href="{{ path('_cms_edit_categ', { 'modelName' : 'cover', 'categ' : 19, 'id' : 2 } ) }}">{{ 'menu.cover' | trans({}, 'CMS') }}</a></li>
 						<li role="separator" class="divider"></li>
+						<li><a href="{{ path('_cms_list', { 'modelName' : 'carousel', 'categ' : 'carousel-teckel' } ) }}">{{ 'menu.carousel' | trans({}, 'CMS') }}</a></li>
+						<li role="separator" class="divider"></li>
 						<li><a href="{{ path('_cms_list',  { 'modelName' : 'pedigree', 'categ' : 35 } ) }}">{{ 'menu.male' | trans({}, 'CMS') }}</a></li>
 						<li><a href="{{ path('_cms_list',  { 'modelName' : 'pedigree', 'categ' : 32 } ) }}">{{ 'menu.female' | trans({}, 'CMS') }}</a></li>
 						<li><a href="{{ path('_cms_list',  { 'modelName' : 'content', 'categ' : 38 } ) }}">{{ 'menu.puppy' | trans({}, 'CMS') }}</a></li>
@@ -117,6 +123,8 @@
 					</a>
 					<ul class="dropdown-menu">
 						<li><a href="{{ path('_cms_edit_categ', { 'modelName' : 'cover', 'categ' : 22, 'id' : 13 } ) }}">{{ 'menu.cover' | trans({}, 'CMS') }}</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="{{ path('_cms_list', { 'modelName' : 'carousel', 'categ' : 'carousel-papillon' } ) }}">{{ 'menu.carousel' | trans({}, 'CMS') }}</a></li>
 						<li role="separator" class="divider"></li>
 						<li><a href="{{ path('_cms_list',  { 'modelName' : 'pedigree', 'categ' : 31 } ) }}">{{ 'menu.male' | trans({}, 'CMS') }}</a></li>
 						<li><a href="{{ path('_cms_list',  { 'modelName' : 'pedigree', 'categ' : 34 } ) }}">{{ 'menu.female' | trans({}, 'CMS') }}</a></li>

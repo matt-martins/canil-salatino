@@ -61,7 +61,7 @@ class ModelComponent
 	protected function uploadFile( $file )
 	{
 		$ext      = $file->guessExtension() ? $file->guessExtension() : 'bin';
-		$filePath = $this->rootPath . '/../web/upload/';
+		$filePath = $this->rootPath . '/../web/uploads/';
 		$fileName = md5( rand( 1, 99999999999 ) ) . '.' . $ext;
 
 		$file->move( $filePath, $fileName );

@@ -44,24 +44,11 @@ class Pedigree extends AbstractType
         ;
     }
 
-    // public function setDefaultOptions(OptionsResolverInterface $resolver)
-    // {
-    //     $resolver->setDefaults(array(
-    //         'data_class' => 'Salatino\EntityBundle\Entity\Content',
-    //         'intention'  => 'smallPicture',
-    //         'cascade_validation' => true,
-    //     ));
-    // }
-
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
             'data_class' => null,
         ));
-
-        // $resolver->setDefaults(array(
-        //     'data_class' => 'Salatino\EntityBundle\Entity\Content',
-        // ));
     }
 
 }

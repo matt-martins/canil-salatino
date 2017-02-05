@@ -31,16 +31,17 @@ class DefaultController extends Controller
 	 */
     public function indexAction( $permalink = null, $sub = null, $id = null )
     {
-        $result = array();
+        $result  = array( 'carousel' => null );
 
         if( $permalink )
         {
             $post = $this->get('model')->get('Salatino\SiteBundle\Core\Content')->getContent( $permalink, $sub, $id );
+            $carousel = $this->get('model')->get('Salatino\SiteBundle\Core\Content')->getCarousel( $post->section->getGroup() );
 
             if( $post )
             {
                 $result = $this->render( 'SalatinoSiteBundle:Default:' . $post->template . '.html.twig', 
-                    array( 'section' => $post->section, 'post' => $post->content, 'pedigree' => $post->pedigree, 'permalink' => $permalink, 'sub' => $sub ) );
+                    array( 'section' => $post->section, 'post' => $post->content, 'pedigree' => $post->pedigree, 'permalink' => $permalink, 'sub' => $sub, 'carousel' => $carousel ) );
             }
             else
             {
