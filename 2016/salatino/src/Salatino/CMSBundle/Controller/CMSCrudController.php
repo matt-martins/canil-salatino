@@ -39,10 +39,11 @@ class CMSCrudController extends Controller
         $model->setCategory( $categ );
         
         return $this->render('SalatinoCMSBundle:Crud:edit.html.twig', array(
-            'modelName' => $modelName,
-            'model'     => $model,
-            'id'        => $id,
-            'form'      => $form->createView()
+            'hideBackButton'  => isset( $model->hideBackButton ) ? $model->hideBackButton : false,
+            'modelName'       => $modelName,
+            'model'           => $model,
+            'id'              => $id,
+            'form'            => $form->createView()
         ));
     }
 
@@ -56,26 +57,29 @@ class CMSCrudController extends Controller
     {
         $dataModel = DataModelFactory::get( 'Salatino\CMSBundle\Model', $modelName );
         $form      = $this->container->get('cms.form')->get( $dataModel, $id );
-
+        
         $form->handleRequest($request);
-
+        
         if ( $form->isSubmitted() && $form->isValid() ) 
         {
             $dataModel = DataModelFactory::get( 'Salatino\CMSBundle\Model', $modelName );
             $model     = $this->container->get('cms.model')->get( $dataModel );
-            
             $model->setCategory( $categ );
             $model->setForm( $form );
-            $model->save( $id );
 
-            return $this->redirectToRoute('_cms_list', array('modelName' => $modelName, 'categ' => $categ ));
+            $result = $model->save( $id );
+            
+            if( null === $result )
+                return $this->redirectToRoute('_cms_list', array('modelName' => $modelName, 'categ' => $categ ));
         }
-
+        
         return $this->render('SalatinoCMSBundle:Crud:edit.html.twig', array(
-            'modelName' => $modelName,
-            'id'        => $id,
-            'form'      => $form->createView()
-        ));
+                    'hideBackButton'  => isset( $model->hideBackButton ) ? $model->hideBackButton : false,
+                    'modelName'       => $modelName,
+                    'model'           => $model,
+                    'id'              => $id,
+                    'form'            => $form->createView()
+                ));;
     }
 
     /**
