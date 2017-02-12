@@ -16,10 +16,12 @@
 		</div>
 	{% endfor %}
 	</div>
+	{% if carousel is defined and carousel | length > 1 %}
 	<a data-slide="prev" role="button" href="#main-slide" class="left carousel-control">
 		<span class="sr-only">Previous</span>
 	</a>
 	<a data-slide="next" role="button" href="#main-slide" class="right carousel-control">
 		<span class="sr-only">Next</span>
 	</a>
+	{% endif %}
 </div>
