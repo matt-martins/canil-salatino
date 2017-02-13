@@ -30,7 +30,10 @@ class Cover extends ModelComponent
 	
 	public function save( $id )
 	{
-		$section = $this->getEntity( 'SalatinoEntityBundle:Section', $this->getCategory() );
+		if( $this->getCategory() !== null )
+			$section = $this->getEntity( 'SalatinoEntityBundle:Section', $this->getCategory() );
+		else
+			$section = null;
 		
 		$content = $this->getEntity( 'SalatinoEntityBundle:Content', $id );
 		$content->setTitle( $this->form['title']->getData() );

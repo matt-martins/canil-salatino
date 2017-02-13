@@ -1,8 +1,4 @@
 services:
-#    prime_cms.example:
-#        class: Salatino\CMSBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
-
 
     salatino_cms.form.registration:
         class: Salatino\CMSBundle\Form\RegistrationType

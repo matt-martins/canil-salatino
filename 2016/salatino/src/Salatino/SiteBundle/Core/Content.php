@@ -57,6 +57,7 @@ class Content extends CoreComponent
 			$obj->section  = $section;
 			$obj->content  = $content;
 			$obj->template = $content->getTemplate();
+			$obj->media    = $this->getMedia();
 			$obj->pedigree = null;
 
 			return $obj;
@@ -73,6 +74,7 @@ class Content extends CoreComponent
 			$obj->section  = $section;
 			$obj->content  = count( $content ) > 1 ? $content : $content[0];
 			$obj->template = count( $content ) > 1 ? $section->getType() : $content[0]->getTemplate();
+			$obj->media    = $this->getMedia();
 			$obj->pedigree = null;
 
 			return $obj;

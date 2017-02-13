@@ -31,22 +31,32 @@ class DefaultController extends Controller
 	 */
     public function indexAction( $permalink = null, $sub = null, $id = null )
     {
-        $result  = array( 'carousel' => null );
+        $result = array();
 
         if( $permalink )
         {
-            $post = $this->get('model')->get('Salatino\SiteBundle\Core\Content')->getContent( $permalink, $sub, $id );
             $carousel = $this->get('model')->get('Salatino\SiteBundle\Core\Content')->getCarousel( $post->section->getGroup() );
+            $post     = $this->get('model')->get('Salatino\SiteBundle\Core\Content')->getContent( $permalink, $sub, $id );
 
             if( $post )
             {
                 $result = $this->render( 'SalatinoSiteBundle:Default:' . $post->template . '.html.twig', 
-                    array( 'section' => $post->section, 'post' => $post->content, 'pedigree' => $post->pedigree, 'permalink' => $permalink, 'sub' => $sub, 'carousel' => $carousel ) );
+                    array( 
+                        'section'   => $post->section,
+                        'post'      => $post->content,
+                        'pedigree'  => $post->pedigree,
+                        'permalink' => $permalink,
+                        'sub'       => $sub,
+                        'carousel'  => $carousel ) );
             }
             else
             {
                 $result = $this->render( 'SalatinoSiteBundle:Error:404.html.twig', array() );
             }
+        }
+        else
+        {
+            $result = $this->get('model')->get('Salatino\SiteBundle\Core\Home')->getHomeContent();
         }
 
 

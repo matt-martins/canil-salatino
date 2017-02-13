@@ -310,12 +310,6 @@ h2 {
 	line-height: 66px;
 	font-size: 18px;
 }
-.puppets-slide .carousel-indicators {
-	bottom: 0px;
-	left: 50%;
-	margin-left: 356px;
-	width: 124px;
-}
 .main-slide .carousel-indicators li,
 .puppets-slide .carousel-indicators li,
 .news-slide .carousel-indicators li {

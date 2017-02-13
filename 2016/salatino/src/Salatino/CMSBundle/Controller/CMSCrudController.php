@@ -66,7 +66,7 @@ class CMSCrudController extends Controller
             $model     = $this->container->get('cms.model')->get( $dataModel );
             $model->setCategory( $categ );
             $model->setForm( $form );
-
+            
             $result = $model->save( $id );
             
             if( null === $result )

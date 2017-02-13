@@ -1,5 +1,18 @@
 {% extends "SalatinoSiteBundle::layout.html.twig" %}
 
+{% block headerCss %}
+<style>
+	.breeds-component .box-italian:before   { background: url('{{ asset('uploads/') }}{{ cover.picture }}') center no-repeat; background-size: 110%; }
+	.breeds-component .box-italian:after    { background: url('{{ asset('uploads/') }}{{ cover.picture }}') center no-repeat; background-size: 100%; }
+
+	.breeds-component .box-teckel:before   { background: url('{{ asset('uploads/') }}{{ cover.smallPicture }}') center no-repeat; background-size: 110%; }
+	.breeds-component .box-teckel:after    { background: url('{{ asset('uploads/') }}{{ cover.smallPicture }}') center no-repeat; background-size: 100%; }
+
+	.breeds-component .box-papillon:before { background: url('{{ asset('uploads/') }}{{ cover.bigPicture }}') center no-repeat; background-size: 110%; }
+	.breeds-component .box-papillon:after  { background: url('{{ asset('uploads/') }}{{ cover.bigPicture }}') center no-repeat; background-size: 100%; }
+</style>
+{% endblock %}
+
 {% block content %}
 <div class="container">
 	
@@ -167,14 +180,7 @@
 		<div class="col-sm-12">
 			<div class="text-description">
 				<p>
-					O  Canil Salatino foi criado há 13 anos na fusão dos sócios: Claudio Gornati,  criador e expositor de cães desde 1970. E Rochester Oliveira,  criador e expositor desde 1994.
-					<br /><br />
-					As raças criadas pelo Salatino foram introduzidas aos poucos, após muito planejamento e preparação de toda equipe. A primeira raça a ser criada pelo Salatino foi Italian Greyhound (1980), logo depois iniciamos a criação do Saluki (1989 ) e Teckel Pelo longo (1998), em seguida Papillon (2000) e a última raça introduzida foi Chinese Crested Dog (2006).
-					<br /><br />
-					O Canil Salatino é um dos únicos canis brasileiros que oferece qualidade comprovada dos cães, contando com experientes criadores como sócios-proprietários do Canil. No Canil Salatino a qualidade dos cães se dá desde à aparência do cão (considerado o canil com os cães mais belos do país) até à saúde de cada cão/gato.
-					<br /><br />
-					A exclusividade da qualidade do Salatino é decorrente do extenso planejamento na criação: nossas matrizes são/foram importadas dos melhores criadores internacionais, e a inclusão de novas matrizes internacionais é frequente garantindo o melhoramento genético das raças.
-					Mas acima de tudo o diferencial único do Salatino esta na forma como os nossos cães e gatos são criados no Clube Salatino.
+					{{ cover.body | raw }}
 				</p>
 			</div>
 		</div>
