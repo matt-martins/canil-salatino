@@ -79,3 +79,6 @@ fos_user:
     registration:
         form:
             type: Salatino\CMSBundle\Form\RegistrationType
+    from_email:
+        address: mateusweb@gmail.com
+        sender_name: Matt
