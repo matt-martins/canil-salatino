@@ -9,14 +9,14 @@
 		
 	</div>
 
+	
 	<div class="col-sm-4">
 		<h2>Salatino na Mídia</h2>
 		<ul class="highlights">
-			<li><a href="">Salatino na Vogue</a></li>
-			<li><a href="">Revista Vogue</a></li>
-			<li><a href="">Revista Corpo a Corpo</a></li>
-			<li><a href="">Salatino no Estadão</a></li>
-			<li><a href="">Passeio de Cães em Campos 2013</a></li>
+		{% for row in media %}
+			{% set path = path('_content', { 'permalink' : 'salatino-na-midia', 'id' : row.id , 'title' : row.title | clearLink }) %}
+			<li><a href="{{ path }}">{{ row.title | LimitString(40) }}</a></li>
+		{% endfor %}
 		</ul>
 	</div>
 </div>

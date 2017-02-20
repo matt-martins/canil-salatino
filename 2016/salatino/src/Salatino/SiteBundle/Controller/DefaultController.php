@@ -35,8 +35,8 @@ class DefaultController extends Controller
 
         if( $permalink )
         {
-            $carousel = $this->get('model')->get('Salatino\SiteBundle\Core\Content')->getCarousel( $post->section->getGroup() );
             $post     = $this->get('model')->get('Salatino\SiteBundle\Core\Content')->getContent( $permalink, $sub, $id );
+            $carousel = $this->get('model')->get('Salatino\SiteBundle\Core\Content')->getCarousel( $post->section->getGroup() );
 
             if( $post )
             {
@@ -45,6 +45,7 @@ class DefaultController extends Controller
                         'section'   => $post->section,
                         'post'      => $post->content,
                         'pedigree'  => $post->pedigree,
+                        'media'     => $post->media,
                         'permalink' => $permalink,
                         'sub'       => $sub,
                         'carousel'  => $carousel ) );

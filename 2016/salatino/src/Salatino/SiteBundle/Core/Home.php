@@ -14,10 +14,12 @@ class Home extends Content
 	{
 		$cover    = $this->getOneContentById( 266 );
 		$carousel = $this->getCarousel( 'carousel-home' );
+		$media    = $this->getContentBySection( 12, true, 5 );
 		
 		return array( 
 			'cover'    => $cover,
-			'carousel' => $carousel 
+			'carousel' => $carousel,
+			'media'    => $media 
 			);
 	}
 	

@@ -37,6 +37,7 @@ class Content extends CoreComponent
 			$obj->section  = $section;
 			$obj->content  = $content;
 			$obj->template = $content->getTemplate();
+			$obj->media    = $this->getContentBySection( 12, true, 5 );
 			$obj->pedigree = $pedigree;
 
 			return $obj;
@@ -57,7 +58,7 @@ class Content extends CoreComponent
 			$obj->section  = $section;
 			$obj->content  = $content;
 			$obj->template = $content->getTemplate();
-			$obj->media    = $this->getMedia();
+			$obj->media    = $this->getContentBySection( 12, true, 5 );
 			$obj->pedigree = null;
 
 			return $obj;
@@ -74,14 +75,14 @@ class Content extends CoreComponent
 			$obj->section  = $section;
 			$obj->content  = count( $content ) > 1 ? $content : $content[0];
 			$obj->template = count( $content ) > 1 ? $section->getType() : $content[0]->getTemplate();
-			$obj->media    = $this->getMedia();
+			$obj->media    = $this->getContentBySection( 12, true, 5 );
 			$obj->pedigree = null;
 
 			return $obj;
 		}
 	}
 
-	public function getCarousel( $group )
+	protected function getCarousel( $group )
 	{
 		$group = explode( '-', $group );
 		$group = 'carousel-' . $group[0];
@@ -89,7 +90,7 @@ class Content extends CoreComponent
 		return $this->getContentByTemplate( $group );
 	}
 
-	private function getSectionByLink( $permalink )
+	protected function getSectionByLink( $permalink )
 	{
 		$sql = 'SELECT n
 				FROM
@@ -104,7 +105,7 @@ class Content extends CoreComponent
 		return $result;
 	}
 
-	private function getContentBySection( $sectionId )
+	protected function getContentBySection( $sectionId, $random = false, $limiation = false )
 	{
 		$sql = 'SELECT n, o
 				FROM
@@ -113,15 +114,39 @@ class Content extends CoreComponent
 				WHERE
 					o.isActive  = 1 AND
 					n.isActive  = 1 AND
-					n.section   = :sectionId
-				ORDER BY n.sequence ASC';
+					n.section   = :sectionId';
 		
-		$result = $this->dql( $sql )->setParameter('sectionId', $sectionId )->getResult();
+		$result = $this->dql( $sql )->setParameter('sectionId', $sectionId );
+		$params = array('sectionId' => $sectionId);
+
+		if( $random == false )
+		{
+			$sql = $sql . ' ORDER BY n.sequence ASC';
+		}
+		else
+		{
+			for( $i = 0; $i < 9999; $i++ )
+			{
+				$rand = rand ( 1 , 9999 );
+				$ids[ $rand ] = $rand;
+			}
+
+			$sql = $sql . ' AND n.id IN(:ids)';
+			$params['ids'] = $ids;
+		}
+			
+
+		$result = $this->dql( $sql )->setParameters( $params );
+
+		if( $limiation != false )
+			$result = $result->setMaxResults( $limiation );
+
+		$result = $result->getResult();
 		
 		return $result;
 	}
 
-	private function getContentByTemplate( $template )
+	protected function getContentByTemplate( $template )
 	{
 		$sql = 'SELECT n
 				FROM
@@ -136,7 +161,7 @@ class Content extends CoreComponent
 		return $result;
 	}
 
-	private function getSingleContentBySectionIdAndType( $sectionId, $type )
+	protected function getSingleContentBySectionIdAndType( $sectionId, $type )
 	{
 		$sql = 'SELECT n, o
 				FROM
@@ -154,7 +179,7 @@ class Content extends CoreComponent
 		return $result;
 	}
 
-	private function getSingleContentBySectionId( $sectionId )
+	protected function getSingleContentBySectionId( $sectionId )
 	{
 		$sql = 'SELECT n, o
 				FROM
@@ -166,9 +191,9 @@ class Content extends CoreComponent
 					n.section   = :sectionId
 				GROUP BY n.section
 				ORDER BY n.sequence ASC';
-		
-		$result = $this->dql( $sql )->setParameters( array('sectionId' => $sectionId) )->getOneOrNullResult();
-		
+
+		$result = $this->dql( $sql )->setParameters( array('sectionId' => $sectionId) )->setMaxResults();
+
 		return $result;
 	}
 
