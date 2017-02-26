@@ -82,7 +82,7 @@ class Content extends CoreComponent
 		}
 	}
 
-	protected function getCarousel( $group )
+	public function getCarousel( $group )
 	{
 		$group = explode( '-', $group );
 		$group = 'carousel-' . $group[0];
@@ -114,7 +114,7 @@ class Content extends CoreComponent
 				WHERE
 					o.isActive  = 1 AND
 					n.isActive  = 1 AND
-					n.section   = :sectionId';
+					n.section   IN (:sectionId)';
 		
 		$result = $this->dql( $sql )->setParameter('sectionId', $sectionId );
 		$params = array('sectionId' => $sectionId);

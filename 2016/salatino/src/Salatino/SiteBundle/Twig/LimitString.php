@@ -12,9 +12,11 @@ class LimitString extends \Twig_Extension
 
     public function LimitString( $value, $limit )
     {
-    	if(strlen($value) > $limit ){
+    	if(strlen($value) > $limit )
+        {
     		return trim ( substr($value, 0 , $limit - 3) ) . "...";
     	}
+        
     	return $value;
     }
 

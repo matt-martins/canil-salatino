@@ -6,6 +6,7 @@ use Salatino\CMSBundle\Model\Component\ModelComponent;
 class Cover extends ModelComponent
 {
 	public $grid = 'SalatinoCMSBundle:CrudCustomLists:title-image.html.twig';
+	public $hideBackButton = true;
 
 	public function listAll()
 	{
@@ -21,7 +22,13 @@ class Cover extends ModelComponent
 	public function generateForm( $id )
 	{
 		$content = $this->getEntity( 'SalatinoEntityBundle:Content', $id );
-		$content->setBody( str_replace( array( '<br />', '<br>', '<br/>' ), "\r\n", $content->getBody() ) );
+
+		$body = $content->getBody();
+		$body = str_replace( "\r\n", "", $body );
+		$body = preg_replace('#(<br */?>\s*)+#i', '<br />', $body);
+		$body = str_replace( array( '<br />', '<br>', '<br/>' ), "\r\n\r\n", $body );
+
+		$content->setBody( $body );
 
 		$form = $this->formFactory->create( 'Salatino\CMSBundle\Form\Cover', $content );
 

@@ -186,6 +186,10 @@ h2 {
 .carousel-inner > .item > img {
 	width: 100%;
 }
+.carousel-inner a {
+	color: inherit;
+	font-size: inherit;
+}
 .breeds-component .box-dynamic,
 .breeds-component .box-papillon,
 .breeds-component .box-teckel,

@@ -78,40 +78,17 @@ class Content extends EntityComponent
     /**
      * @var string
      *
-     * @ORM\Column(name="show_gallery", type="string", length=45, nullable=true)
+     * @ORM\Column(name="show_hostel", type="boolean", length=45, nullable=true)
      */
-    private $showGallery;
+    private $showHostel;
     
     /**
      * @var string
      *
-     * @ORM\Column(name="show_video", type="string", length=45, nullable=true)
+     * @ORM\Column(name="show_puppies", type="boolean", length=45, nullable=true)
      */
-    private $showVideo;
+    private $showPuppies;
     
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="folder", type="string", length=100, nullable=true)
-     */
-    private $folder;
-    
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="tags", type="string", length=1000, nullable=true)
-     */
-    private $tags;
-    
-    /**
-     * @@ORM\Column(type="integer", name="views" nullable=false, options={"unsigned":true, "default":0})
-     */
-    private $views;
-    
-    /**
-     * @@ORM\Column(type="integer", name="ranking" nullable=false, options={"unsigned":true, "default":0})
-     */
-    private $ranking;
 
 
     /**
@@ -224,6 +201,33 @@ class Content extends EntityComponent
     }
 
     /**
+     * Set bigPicture
+     *
+     * @param string $bigPicture
+     *
+     * @return Content
+     */
+    public function setBigPicture($bigPicture)
+    {
+        if( $bigPicture !== null )
+        {
+            $this->bigPicture = $bigPicture;
+
+            return $this;
+        }
+    }
+
+    /**
+     * Get bigPicture
+     *
+     * @return string
+     */
+    public function getBigPicture()
+    {
+        return $this->bigPicture;
+    }
+
+    /**
      * Set smallPicture
      *
      * @param string $smallPicture
@@ -275,99 +279,51 @@ class Content extends EntityComponent
     }
 
     /**
-     * Set showGallery
+     * Set showHostel
      *
-     * @param string $showGallery
+     * @param string $showHostel
      *
      * @return Content
      */
-    public function setShowGallery($showGallery)
+    public function setShowHostel($showHostel)
     {
-        $this->showGallery = $showGallery;
+        $this->showHostel = $showHostel;
 
         return $this;
     }
 
     /**
-     * Get showGallery
+     * Get showHostel
      *
      * @return string
      */
-    public function getShowGallery()
+    public function getShowHostel()
     {
-        return $this->showGallery;
+        return $this->showHostel;
     }
 
     /**
-     * Set showVideo
+     * Set showPuppies
      *
-     * @param string $showVideo
+     * @param string $showPuppies
      *
      * @return Content
      */
-    public function setShowVideo($showVideo)
+    public function setShowPuppies($showPuppies)
     {
-        $this->showVideo = $showVideo;
+        $this->showPuppies = $showPuppies;
 
         return $this;
     }
 
     /**
-     * Get showVideo
+     * Get showPuppies
      *
      * @return string
      */
-    public function getShowVideo()
+    public function getShowPuppies()
     {
-        return $this->showVideo;
-    }
-
-    /**
-     * Set folder
-     *
-     * @param string $folder
-     *
-     * @return Content
-     */
-    public function setFolder($folder)
-    {
-        $this->folder = $folder;
-
-        return $this;
-    }
-
-    /**
-     * Get folder
-     *
-     * @return string
-     */
-    public function getFolder()
-    {
-        return $this->folder;
-    }
-
-    /**
-     * Set tags
-     *
-     * @param string $tags
-     *
-     * @return Content
-     */
-    public function setTags($tags)
-    {
-        $this->tags = $tags;
-
-        return $this;
-    }
-
-    /**
-     * Get tags
-     *
-     * @return string
-     */
-    public function getTags()
-    {
-        return $this->tags;
+        return $this->showPuppies;
     }
 
     /**
@@ -392,32 +348,5 @@ class Content extends EntityComponent
     public function getSection()
     {
         return $this->section;
-    }
-
-    /**
-     * Set bigPicture
-     *
-     * @param string $bigPicture
-     *
-     * @return Content
-     */
-    public function setBigPicture($bigPicture)
-    {
-        if( $bigPicture !== null )
-        {
-            $this->bigPicture = $bigPicture;
-
-            return $this;
-        }
-    }
-
-    /**
-     * Get bigPicture
-     *
-     * @return string
-     */
-    public function getBigPicture()
-    {
-        return $this->bigPicture;
     }
 }

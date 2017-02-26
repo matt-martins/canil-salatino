@@ -45,10 +45,36 @@
 		</div>
 	</div>
 
+	{% if cover.showHostel == 1 %}
 	<div class="row">
 		<div class="col-sm-8 pdr news-slide-wrapper">
 			<h2>Hotel Clube Salatino</h2>
-			
+
+			<div data-ride="carousel" class="carousel slide news-slide" id="news-slide">
+				<ol class="carousel-indicators">
+				{% for row in hostel %}
+					<li class="{{ loop.index0 == 0 ? 'active' : '' }}" data-slide-to="{{ loop.index0 }}" data-target="#news-slide"></li>
+				{% endfor %}
+				</ol>
+
+				<div role="listbox" class="carousel-inner">
+				{% for row in hostel %}
+					<div class="item {{ loop.index0 == 0 ? 'active' : '' }}">
+						<div class="box-label">
+
+							{% set path = path('_content', { 'permalink' : row.section.permalink, 'id' : row.id , 'title' : row.title | clearLink }) %}
+
+							<h3><a href="{{ path }}">{{ row.title }}</a></h3>
+							<p><small><a href="{{ path }}">{{ row.body | InlineText(100) }}</a></small></p>
+						</div>
+						<img src="{{ asset('uploads/') }}{{ row.picture }}">
+					</div>
+				{% endfor %}
+				</div>
+			</div>
+
+
+			{#}
 			<div data-ride="carousel" class="carousel news-slide slide" id="news-slide">
 				<ol class="carousel-indicators">
 					<li class="active" data-slide-to="0" data-target="#news-slide"></li>
@@ -79,6 +105,8 @@
 					</div>
 				</div>
 			</div>
+			{#}
+
 		</div>
 
 		<div class="col-sm-4 news-slide">
@@ -136,43 +164,41 @@
 			</form>
 		</div>
 	</div>
+	{% endif %}
 
+
+	{% if cover.showPuppies == 1 %}
 	<div class="row">
 		<div class="col-sm-12">
 			<h2>Conheça os Filhotes Salatino</h2>
 			
 			<div data-ride="carousel" class="carousel puppets-slide slide" id="puppets-slide">
 				<ol class="carousel-indicators">
-					<li class="active" data-slide-to="0" data-target="#puppets-slide"></li>
-					<li data-slide-to="1" data-target="#puppets-slide" class=""></li>
-					<li data-slide-to="2" data-target="#puppets-slide" class=""></li>
+					{% for row in puppies %}
+						<li class="{{ loop.index0 == 0 ? 'active' : '' }}" data-slide-to="{{ loop.index0 }}" data-target="#puppets-slide"></li>
+					{% endfor %}
 				</ol>
+
 				<div role="listbox" class="carousel-inner">
-					<div class="item active">
+				{% for row in puppies %}
+					<div class="item {{ loop.index0 == 0 ? 'active' : '' }}">
 						<div class="box-label">
-							<h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit quo aliquid facere.</h3>
-							<p><small>Id eos modi repellendus molestiae adipisci nulla provident incidunt sed unde nostrum veritatis deserunt accusantium <br>impedit reiciendis.</small></p>
+
+							{% set permLink = row.section.permalink | split('/') %}
+							
+							{% set path = path('_sub_content', { 'permalink' : permLink[0], 'sub' : permLink[1] , 'id' : row.id , 'title' : row.title | clearLink }) %}
+
+							<h3><a href="{{ path }}">{{ row.title }}</a></h3>
+							<p><small><a href="{{ path }}">{{ row.body | InlineText(180) }}</a></small></p>
 						</div>
-						<img src="{{ asset('bundles/salatinosite/images/carousel-6.png') }}">
+						<img src="{{ asset('uploads/') }}{{ row.bigPicture }}">
 					</div>
-					<div class="item">
-						<div class="box-label">
-							<h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus.</h3>
-							<p><small>Lipsum dolorum, autem voluptatibus veniam quisquam, facere perferendis aperiam molestiae obcaecati iste! Ipsum, unde! <br>Excepturi dolorem impedit delectus reprehenderit.</small></p>
-						</div>
-						<img src="{{ asset('bundles/salatinosite/images/carousel-7.png') }}">
-					</div>
-					<div class="item">
-						<div class="box-label">
-							<h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae quam.</h3>
-							<p><small>Officia est accusamus nobis assumenda commodi tenetur doloremque asperiores ipsam, earum nemo nisi distinctio voluptate? <br>Dolore distinctio sapiente, necessitatibus!</small></p>
-						</div>
-						<img src="{{ asset('bundles/salatinosite/images/carousel-8.png') }}">
-					</div>
+				{% endfor %}
 				</div>
 			</div>
 		</div>
 	</div>
+	{% endif %}
 
 	{% embed "SalatinoSiteBundle::Snippet/Instagram.html.twig" %}{% endembed %}
 

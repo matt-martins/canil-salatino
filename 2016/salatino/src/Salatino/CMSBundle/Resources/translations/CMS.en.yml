@@ -45,6 +45,9 @@ forms:
         pic01        : 'IMAGEM 01'
         pic02        : 'IMAGEM 02'
         pic03        : 'IMAGEM 03'
+        showPuppies  : 'Exibir Filhotes' 
+        showHostel   : 'Exibir Hospedagem' 
+
 
         cp01         : 'PAI'
         cp02         : 'AVÓS'

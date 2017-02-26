@@ -15,11 +15,15 @@ class Home extends Content
 		$cover    = $this->getOneContentById( 266 );
 		$carousel = $this->getCarousel( 'carousel-home' );
 		$media    = $this->getContentBySection( 12, true, 5 );
-		
+		$puppies  = $cover->getShowPuppies() ? $this->getContentBySection( 12, true, 5 ) : null;
+		$hostel   = $cover->getShowHostel() ? $this->getContentBySection( 12, true, 3 ) : null;
+
 		return array( 
 			'cover'    => $cover,
 			'carousel' => $carousel,
-			'media'    => $media 
+			'puppies'  => $puppies,
+			'media'    => $media,
+			'hostel'   => $hostel 
 			);
 	}
 	

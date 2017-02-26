@@ -49,4 +49,22 @@ textarea.form-control {
 	height: 250px;
 	resize: none; 
 }
+#fos_user_registration > div {
+    padding: 10px 0;
+}
+#fos_user_registration label {
+    float: left;
+    min-width: 20%;
+    text-align: right;
+    padding-right: 10px;
+    line-height: 40px;
+
+}
+#fos_user_registration input {
+    width: 80%;
+    height: 40px;
+}
+.fos_user_registration_register .btn-default {
+    float: right;
+}
 .temp {}

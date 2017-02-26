@@ -1,5 +1,5 @@
+{% extends "SalatinoCMSBundle::layout.html.twig" %}
 {% trans_default_domain 'FOSUserBundle' %}
-{% form_theme form 'bootstrap_3_layout.html.twig'  %}
 
 {% block content %}
 	{% block fos_user_content %}
@@ -11,14 +11,14 @@
 			</div>
 		</div>
 
-		<div class="col-xs-12 col-md-4 col-md-offset-4">
+		<div class="col-xs-12 col-md-8 col-md-offset-2">
 
-			{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+			{{ form_start(form, {'method': 'post', 'action': path('register_form'), 'attr': {'class': 'fos_user_registration_register'}}) }}
 
 				{{ form_widget( form )  }}
 
 			    <div>
-			    	<button type="submit" class="btn btn-default">{{ 'registration.submit'|trans }}</button>
+			    	<button type="submit" class="btn btn-default pull-rigth">{{ 'registration.submit'|trans }}</button>
 			    </div>
 			{{ form_end(form) }}
 		</div>
