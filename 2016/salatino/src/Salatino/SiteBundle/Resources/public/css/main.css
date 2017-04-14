@@ -276,7 +276,7 @@ h2 {
 	height: 100%;
 	content: " ";
 	z-index: 4;
-	opacity: .6;
+	/*opacity: .6;*/
 	-webkit-transition: All 1s ease-in-out;
 	   -moz-transition: All 1s ease-in-out;
 		 -o-transition: All 1s ease-in-out;
