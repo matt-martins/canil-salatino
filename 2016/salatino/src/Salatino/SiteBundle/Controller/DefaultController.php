@@ -35,8 +35,9 @@ class DefaultController extends Controller
 
         if( $permalink )
         {
-            $post     = $this->get('model')->get('Salatino\SiteBundle\Core\Content')->getContent( $permalink, $sub, $id );
-            $carousel = $this->get('model')->get('Salatino\SiteBundle\Core\Content')->getCarousel( $post->section->getGroup() );
+            $post      = $this->get('model')->get('Salatino\SiteBundle\Core\Content')->getContent( $permalink, $sub, $id );
+            $carousel  = $this->get('model')->get('Salatino\SiteBundle\Core\Content')->getCarousel( $post->section->getGroup() );
+            $instagram = $this->get('model')->get('Salatino\SiteBundle\Core\InstaFeed')->getFeed( 'clube_salatino', 4 );
 
             if( $post )
             {
@@ -48,6 +49,7 @@ class DefaultController extends Controller
                         'media'     => $post->media,
                         'permalink' => $permalink,
                         'sub'       => $sub,
+                        'instagram' => $instagram,
                         'carousel'  => $carousel ) );
             }
             else
@@ -64,3 +66,9 @@ class DefaultController extends Controller
         return $result;
     }
 }
+
+
+
+
+
+

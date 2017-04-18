@@ -12,18 +12,22 @@ class Home extends Content
 
 	public function getHomeContent()
 	{
-		$cover    = $this->getOneContentById( 266 );
-		$carousel = $this->getCarousel( 'carousel-home' );
-		$media    = $this->getContentBySection( 12, true, 5 );
-		$puppies  = $cover->getShowPuppies() ? $this->getContentBySection( array(38,37,36), true, 5 ) : null;
-		$hostel   = $cover->getShowHostel() ? $this->getContentBySection( 12, true, 3 ) : null;
+		$instaFeed = new InstaFeed();
+		$instagram = $instaFeed->getFeed( 'clube_salatino', 4 );
+
+		$cover     = $this->getOneContentById( 266 );
+		$carousel  = $this->getCarousel( 'carousel-home' );
+		$media     = $this->getContentBySection( 12, true, 5 );
+		$puppies   = $cover->getShowPuppies() ? $this->getContentBySection( array(38,37,36), true, 5 ) : null;
+		$hostel    = $cover->getShowHostel() ? $this->getContentBySection( 12, true, 3 ) : null;
 
 		return array( 
-			'cover'    => $cover,
-			'carousel' => $carousel,
-			'puppies'  => $puppies,
-			'media'    => $media,
-			'hostel'   => $hostel 
+			'cover'       => $cover,
+			'carousel'    => $carousel,
+			'puppies'     => $puppies,
+			'media'       => $media,
+			'instagram'   => $instagram,
+			'hostel'      => $hostel 
 			);
 	}
 	
